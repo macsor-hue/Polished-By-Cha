@@ -1,0 +1,94 @@
+<?php
+session_start()
+?>
+    <?php
+    if (!empty($_SESSION['flash'])){
+        $type = $_SESSION['flash']['type'];
+        $text = $_SESSION['flash']['text'];
+
+        echo "<div class='msg " . htmlspecialchars($type) . "'>" . htmlspecialchars($text). "</div>";
+
+        unset($_SESSION['flash']);
+    }
+    
+        if(empty($_SESSION['user'])){
+    ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/style/header.css">
+    <link rel="stylesheet" href="resources/style/style.css">
+    <title>Cha's Nails</title>
+    <link rel="icon" type="image/x-icon" href="resources/style/photos/header_icon.png">    
+</head>
+<body id="register">
+    <form action="code.php" method="POST">
+        <nav class="navbar">
+            <div class="navdiv">
+                <div class="nav_cont">
+                    <input type="hidden" name="action" value="register">
+                     <img src="resources/style/photos/logo.jpg" alt="Image of Logo" class="float-img">
+                    <h2 id="welcome">Welcome to Polished By Cha</h2>
+                </div>
+            </div>
+        </nav>
+        <div class="reg_info">
+            
+                <h2 id="reg_text">Register</h2><br>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username"><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br>
+                <button type="submit" id="reg_box" name="submit">Register</button><br><br>
+        </div>
+    </form> 
+
+Already have an account? <a href="login.php">Login here!</a>
+</body>
+</html>
+
+
+<?php
+        } else {        
+    ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/style/dashboard.css">
+    <title>Cha's Nails</title>
+    <link rel="icon" type="image/x-icon" href="resources/style/photos/header_icon.png">
+</head>
+<body id="dashboard_body">
+    <nav class="navbar">
+        <div class="navdiv">
+            <div class="left-nav">
+                <img src="resources/style/photos/logo.jpg" class="float-img">
+                    <h2 id="dash_text">DASHBOARD</h2>
+            </div>
+            <div class="right-nav">
+                <ul>
+                    <li><a href="features/coolstuff/users.php">User Account</a></li>
+                    <li><a href="crud/table/table.php">View scheduling</a></li>
+                    <li><a href="features/coolstuff/search.php">Search</a></li>
+                    <li><a href="features/coolstuff/salesreport.php">Sales report</a></li>
+                    <form action="code.php" method="POST">
+                        <input type="hidden" name="action" value="admin">
+                        <li><button type="submit">Admin</button></li>
+                        <input type="hidden" name="action" value="logout">
+                        <li><button type="submit">Logout</button></li>
+                    </form>   
+                </ul>
+             </div>
+        </div>
+    </nav>
+    
+   
+<?php   
+        }
+       ?>
+    </body>
+</html>

@@ -1,0 +1,84 @@
+
+
+*{
+    text-decoration: none;
+}
+
+.schedule-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nav_home ul{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+ #schedule_body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fbe6c9;
+    background-color: #be2c26;
+    margin: 0;
+    padding: 0;
+}
+.navbar{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #fbe6c9;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.navdiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.float-img {
+    margin-top: -2px;
+    height: 100px;   
+    width: auto;   
+}
+
+li{
+    list-style: none;
+    display: inline-block;
+}
+li a{
+    color:#be2c26;
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 25px;
+}
+button{
+    color: #be2c26;
+    background-color:#fbe6c9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 90px;
+}
+#sched_text{
+    color: #be2c26;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.sched_info{
+    padding-top: 80px;
+    margin: 0 auto; 
+    display: block;
+}
+.sched_info table, th, td {
+    
+    border-collapse: collapse;
+    width: 600px;
+    text-align: center;
+    border: 1px solid black;
+}
