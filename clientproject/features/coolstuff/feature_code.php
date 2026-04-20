@@ -66,6 +66,11 @@ if($action === 'users'){
     $npassword = filter_input(INPUT_POST, 'npassword', FILTER_SANITIZE_SPECIAL_CHARS);
     $npassword = ($_POST['npassword'] ?? '');
     
+    $stmt = $conn->prepare("SELECT username, pass FROM accinfo WHERE id = ?");
+$stmt->bind_param("i", $userid);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
    
     if(strlen($username) < 3){
         flash('err' , 'Update failed: username must be atleast 3 characters');
@@ -84,8 +89,10 @@ if ($npassword !== ''&& $cpassword !== '') {
 
 
     if(password_verify($cpassword, $user['pass'])){
+
         $hash=password_hash($npassword, PASSWORD_DEFAULT);
         $stmt = $conn->prepare("UPDATE accinfo SET username = ?,pass = ? WHERE id = ?");
+
     if(!$stmt){
         flash('err' , 'Update failed: database error');
         redirect_users();
@@ -93,7 +100,9 @@ if ($npassword !== ''&& $cpassword !== '') {
     }
 
     $stmt->bind_param("ssi", $username,$hash,$userid);
-    }else{
+
+    }
+    else{
     flash('err','Current password does not match');
     exit();
     }}
