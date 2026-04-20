@@ -33,12 +33,13 @@ include("../../connect/conn/database.php");
         <table>
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>temp_name</th>
-                    <th>temp_date</th>
-                    <th>temp_var1</th>
-                    <th>temp_var2</th>
-                    <th>temp_var3</th>
+                    
+                    <th>Customer Name</th>
+                    <th>Appointed date</th>
+                    <th>Appointed time</th>
+                    <th>Service</th>
+                    <th>Price</th>
+                    <th>Duration</th>
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
@@ -53,14 +54,15 @@ include("../../connect/conn/database.php");
                 while($row = mysqli_fetch_assoc($result)){
                     ?>
                     <tr>
-                        <td><?php echo $row["temp_id"]; ?></td>
-                        <td><?php echo $row["temp_name"]; ?></td>
-                        <td><?php echo $row["temp_date"]; ?></td>
-                        <td><?php echo $row["temp_var1"]; ?></td>
-                        <td><?php echo $row["temp_var2"]; ?></td>
-                        <td><?php echo $row["temp_var3"]; ?></td>
-                        <td><a href="update.php?updateid=<?php echo $row['temp_id']; ?>"><button>Update Record</button></a></td>
-                        <td><a href="delete.php?deleteid=<?php echo $row['temp_id']; ?>"><button>Delete Record</button></a></td>
+                    
+                        <td><?php echo $row["customer_name"]; ?></td>
+                        <td><?php echo $row["appointment_date"]; ?></td>
+                        <td><?php echo $row["appointment_time"]; ?></td>
+                        <td><?php echo $row["service"]; ?></td>
+                        <td><?php echo $row["price"]; ?></td>
+                        <td><?php echo $row["duration"]; ?></td>
+                        <td><a href="update.php?updateid=<?php echo $row['Customer_id']; ?>"><button>Update Record</button></a></td>
+                        <td><a href="delete.php?deleteid=<?php echo $row['Customer_id']; ?>"><button>Delete Record</button></a></td>
                     </tr>
                     <?php
                 }?>

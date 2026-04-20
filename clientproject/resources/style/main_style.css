@@ -1,0 +1,28 @@
+
+.logo-banner {
+  float: left; 
+  margin-right: 15px; 
+  margin-bottom: 15px; 
+  width: 25px;
+}
+#welcome{
+    font-size: 25px;
+    color: #af2e2d;
+    background-color: #fce7cc;
+    height: 40px;
+    width: 100%;
+    text-align: left;
+    margin-top: -5px;
+    padding: 5px;
+}
+
+body, .reg{
+  text-align: center;
+  color: #fce7cc;
+  background-color: #af2e2d ;
+}
+
+#username, #password{
+  height: 25px;
+  width: 100px;
+}

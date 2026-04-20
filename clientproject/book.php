@@ -2,15 +2,19 @@
 session_start();
 ?>
 <?php
-include("../../connect/conn/database.php");
+include("connect/conn/database.php");
 
 $username = $_SESSION['user']['username'] ?? ''; 
+  $time = $_POST['time'] ?? '';
+    $day = $_POST['date'] ?? '';
+
+
 if(isset($_POST["submit"])){
 
-    $customer_name = $_POST["customer_name"];
-    $appointment_date = $_POST["appointment_date"];
-    $appointment_time = $_POST['appointment_time'];
-
+    $customer_name = $_POST["customer_name"]?? '';
+    $appointment_date = $_POST["appointment_date"]?? '';
+    $appointment_time = $_POST['appointment_time']?? '';
+  
     // Split service, price, and duration
     if(isset($_POST['service'])){
         $service_data = $_POST['service'];
@@ -25,12 +29,13 @@ $sql = "INSERT INTO clientinfo ( customer_name,appointment_date,appointment_time
 $query = mysqli_query($conn, $sql);
 
 if($query){ 
-  header("Location: table.php");
+  header("Location: index.php");
   exit();
 }
 
 
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -42,22 +47,11 @@ if($query){
 </head>
 <body>
     <div>
-        <form action="add.php" method="POST">
+        <form action="book.php" method="POST">
             
             <input type="hidden" name="customer_name" value="<?php echo $username ?>" required><br>
-            <label for="appointment_date">Appointment Date:</label><br>
-            <input type="date" name="appointment_date" required ><br>
-            <label for="appointment_time">Time</label>
-            <select name="appointment_time" id="time" required>
-                <option value="9:00 AM">9:00 AM</option>
-                <option value="10:30 AM">10:30 AM</option>
-                <option value="12:00 PM">12:00 PM</option>
-                <option value="1:30 PM">1:30 PM</option>
-                <option value="3:00 PM">3:00 PM</option>
-                <option value="4:30 PM">4:30 PM</option>
-                <option value="6:00 PM">6:00 PM</option>
-                <option value="7:30 PM">7:30 PM</option>
-            </select><br>
+           <input type="hidden" name="appointment_time" value="<?php echo $time ?>">
+           <input type="hidden" name="appointment_date" value="<?php echo $day ?>">
             <label for="Services">Services:</label><br>
             <select name="service" id="serve" required >
                 <option value="Plain Gel Polish|150|1hr" >Plain Gel Polish  (Php150)</option>
@@ -69,6 +63,8 @@ if($query){
             <button type="submit" name="submit">Submit</button>
         </form>
     </div>
+    
+    
 </body>
 </html>
 

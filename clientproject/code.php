@@ -35,8 +35,7 @@ if($action === ''){
 //REGISTER
 
 if($action === 'register'){
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
-    $username = trim($_POST['username']?? '');
+   $username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS));
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
      $password = ($_POST['password'] ?? '');
 
@@ -67,12 +66,16 @@ if($action === 'register'){
 
     $stmt->bind_param("ss", $username, $hash);
 
-    if($stmt->execute()) {
-        flash('ok', 'Registration Successful! You can now log in');
-
-    }else {
-        flash('ok', 'Registration Failed! username may already exist');
+   try {
+    $stmt->execute();
+    flash('ok', 'Registration Successful! You can now log in');
+} catch (mysqli_sql_exception $e) {
+    if ($e->getCode() === 1062) {
+        flash('err', 'Registration failed: username already exists');
+    } else {
+        flash('err', 'Registration failed: database error');
     }
+}
   
      $stmt->close();
     redirect_index();
@@ -82,8 +85,7 @@ if($action === 'register'){
 
 //login
 if($action === 'login'){
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
-    $username = trim($_POST['username']?? '');
+    $username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS));
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
     $password = ($_POST['password'] ?? '');
 
@@ -142,11 +144,7 @@ if($action === 'logout'){
 if($action === 'admin'){
    $username = $_SESSION['user']['username'] ?? '';
     
-   if($username === ''){
-    flash('err', 'User not logged in');
-    redirect_login();
-    exit();
-    }
+
 
 
     $stmt=$conn->prepare("SELECT permission FROM accinfo WHERE username = ? LIMIT 1");
@@ -175,6 +173,7 @@ if($action === 'admin'){
    
     
 }
+
 
 
 

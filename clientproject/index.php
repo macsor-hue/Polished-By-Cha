@@ -1,7 +1,20 @@
 <?php
-session_start()
+session_start();
+include("connect/conn/database.php");
 ?>
     <?php
+    $username = $_SESSION['user']['username'] ?? '';
+$stmt=$conn->prepare("SELECT permission FROM accinfo WHERE username = ? LIMIT 1");
+    if(!$stmt){
+        flash('err' , 'Database error');
+        redirect_login();
+        exit();
+    }
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result=$stmt->get_result();
+    $user = $result->fetch_assoc();
+    
     if (!empty($_SESSION['flash'])){
         $type = $_SESSION['flash']['type'];
         $text = $_SESSION['flash']['text'];
@@ -51,7 +64,8 @@ Already have an account? <a href="login.php">Login here!</a>
 
 
 <?php
-        } else {        
+        } elseif ($user && $user['permission'] === 'yes'){   
+           
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,6 +92,8 @@ Already have an account? <a href="login.php">Login here!</a>
                     <form action="code.php" method="POST">
                         <input type="hidden" name="action" value="admin">
                         <li><button type="submit">Admin</button></li>
+                        </form>
+                    <form action="code.php" method="post">
                         <input type="hidden" name="action" value="logout">
                         <li><button type="submit">Logout</button></li>
                     </form>   
@@ -85,10 +101,153 @@ Already have an account? <a href="login.php">Login here!</a>
              </div>
         </div>
     </nav>
-    
-   
+   <?php
+   $startoftheweek = date('Y-m-d',strtotime('monday this week'));
+   $week=[];
+   for ($i=0;$i<7;$i++){
+    $week[]=date('Y-m-d',strtotime("$startoftheweek+$i days"));
+   }
+   $times = [
+    "9:00 AM","10:30 AM","12:00 PM","1:30 PM",
+    "3:00 PM","4:30 PM","6:00 PM","7:30 PM"];
+   ?>
+   <table>
+    <thead>
+        <th>Time</th>
+        <?php foreach($week as $day):?>
+        <th><?php echo date('D',strtotime($day));?><br><?php echo $day;?></th>
+        <?php endforeach;?>
+    </thead>
+
+    <tbody>
+        <?php foreach($times as $time):?>
+            <tr>
+                <td><?php echo $time;?></td>
+          
+            
+            <?php foreach($week as $day):?>
+            <td>
+            <?php $dayname=date('l',strtotime($day));
+            if(in_array($dayname,['Monday','Tuesday','Wednesday','Thursday'])){
+                echo"At School (Unavailable)";
+            }
+            else{
+                $stmt=$conn->prepare("SELECT * FROM clientinfo WHERE appointment_date=? and appointment_time=?");
+                $stmt->bind_param("ss",$day,$time);
+                $stmt->execute();
+                $result=$stmt->get_result();
+
+                if($result->num_rows>0){
+                    echo "BOOKED";
+                }
+                else{
+                    echo ' <form action="book.php" method="post">
+    <input type="hidden" name="time" value="'.$time.'">
+    <input type="hidden" name="date" value="'.$day.'">
+    <button type="submit">Available</a></button>
+  </form>';
+                
+                }
+            }
+            ?>
+            </td>
+            
+            <?php endforeach;?>
+             </tr>
+             <?php endforeach;?>
+    </tbody>
+   </table>
+ 
+
 <?php   
-        }
+        }else{
+            
+        
        ?>
+       <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/style/dashboard.css">
+    <title>Cha's Nails</title>
+    <link rel="icon" type="image/x-icon" href="resources/style/photos/header_icon.png">
+</head>
+<body id="dashboard_body">
+    <nav class="navbar">
+        <div class="navdiv">
+            <div class="left-nav">
+                <img src="resources/style/photos/logo.jpg" class="float-img">
+                    <h2 id="dash_text">DASHBOARD</h2>
+            </div>
+            <div class="right-nav">
+                <ul>
+                    <li><a href="features/coolstuff/users.php">User Account</a></li>    
+                    <li><a href="features/coolstuff/search.php">Search</a></li>
+                    <form action="code.php" method="post">
+                        <input type="hidden" name="action" value="logout">
+                        <li><button type="submit">Logout</button></li>
+                    </form>   
+                </ul>
+             </div>
+        </div>
+    </nav>
+   <?php
+   $startoftheweek = date('Y-m-d',strtotime('monday this week'));
+   $week=[];
+   for ($i=0;$i<7;$i++){
+    $week[]=date('Y-m-d',strtotime("$startoftheweek+$i days"));
+   }
+   $times = [
+    "9:00 AM","10:30 AM","12:00 PM","1:30 PM",
+    "3:00 PM","4:30 PM","6:00 PM","7:30 PM"];
+   ?>
+   <table>
+    <thead>
+        <th>Time</th>
+        <?php foreach($week as $day):?>
+        <th><?php echo date('D',strtotime($day));?><br><?php echo $day;?></th>
+        <?php endforeach;?>
+    </thead>
+
+    <tbody>
+        <?php foreach($times as $time):?>
+            <tr>
+                <td><?php echo $time;?></td>
+          
+            
+            <?php foreach($week as $day):?>
+            <td>
+            <?php $dayname=date('l',strtotime($day));
+            if(in_array($dayname,['Monday','Tuesday','Wednesday','Thursday'])){
+                echo"At School (Unavailable)";
+            }
+            else{
+                $stmt=$conn->prepare("SELECT * FROM clientinfo WHERE appointment_date=? and appointment_time=?");
+                $stmt->bind_param("ss",$day,$time);
+                $stmt->execute();
+                $result=$stmt->get_result();
+
+                if($result->num_rows>0){
+                    echo "BOOKED";
+                }
+                else{
+                    echo ' <form action="book.php" method="post">
+    <input type="hidden" name="time" value="'.$time.'">
+    <input type="hidden" name="date" value="'.$day.'">
+    <button type="submit">Available</a></button>
+  </form>';
+                
+                }
+            }
+            ?>
+            </td>
+            
+            <?php endforeach;?>
+             </tr>
+             <?php endforeach;?>
+    </tbody>
+   </table>
+            <?php } ?>
     </body>
 </html>
