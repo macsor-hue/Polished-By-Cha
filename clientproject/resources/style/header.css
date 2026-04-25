@@ -8,14 +8,14 @@
 }
 #dashboard_body{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #fbe6c9;
-  background-color: #be2c26;
+  color: #FFF0F5;
+  background-color: #E89EB8;
   margin: 0;
   padding: 0;
 }
 .navbar{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-color: #fbe6c9;
+  background-color: #FFF0F5;
   text-align: left ;
   padding-right: 15px;
   padding-left: 15px;
@@ -33,7 +33,7 @@
   width: auto;   
 }
 #welcome{
-  color: #be2c26;
+  color: #E89EB8;
   font-size: 30px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   

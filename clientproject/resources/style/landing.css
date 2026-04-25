@@ -1,0 +1,155 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+.logo-img {
+  margin-top: -2px;
+  height: 85px;   
+  width: auto; 
+  border: 3px solid #FFF0F5; 
+  border-radius: 87%;
+}
+.container a {
+  display: flex;
+  align-items: center; 
+  gap: 10px;   
+}
+.landing_header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 10%;
+    background: #E89EB8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0px 2px 15px #220106;
+}
+.landing_navbar a{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: #960018;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: .2s;
+}
+.landing_navbar a:hover, 
+.landing_navbar a.active {
+    color:#FFF0F5;
+}
+#brand_name{
+    color: #960018;
+    font-size: 28px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: left;
+
+}
+.home{
+    background-image:linear-gradient(to right,#FFF0F5,rgba(0,0,0,0)), 
+                    url('photos/home_bg.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+.home_content{
+    max-width: 700px;
+    text-align: left;
+}
+.home_content h1{
+    font-size: 60px;
+    font-weight: 700;
+
+}
+.home_content .desc_brand{
+    font-size: 80px;
+    color: #960018;
+}
+.home_content .landing_button{
+    margin-top: 40px;
+    width: 475px;
+    height: 75px;
+}
+.landing_button a{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 475px;
+    height: 100%; 
+    background: #960018;
+    border: 2px solid #960018;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #FFF0F5;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.services{
+    background-image:linear-gradient(to right,#FFF0F5,rgba(0,0,0,0)), 
+                    url('photos/services_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+.contact{
+    background:#FFF0F5;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+.about{
+    background: #FFF0F5;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.landing_footer{
+    bottom: 0;
+    left: 0;
+    height: 90px;
+    width: 100%;
+    padding: 10px 10%;
+    background: #960018;
+    align-items: center;
+    justify-content:space-between;
+    display: flex;
+    z-index: 100;
+
+}
+.footer_content{
+    align-items: center;
+}
+.footer_content h2{
+    color: #FFF0F5;
+    font-size: 20px;
+}
+
+.social_fb{
+    margin-top:8px;
+    width: 20px;
+    height: 20px;
+    margin-left: 25px;
+    margin-right: 5px;
+}
+.social_phone{
+    width: 20px;
+    height: 20px;
+}
+

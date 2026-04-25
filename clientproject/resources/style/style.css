@@ -11,8 +11,8 @@ table, th, td {
     padding: 0;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fbe6c9;
-    background-color: #be2c26;
+    color: #FFF0F5;
+    background-color: #E89EB8;
 }
 .reg_info, .login_info, .update_info{
     
@@ -23,8 +23,8 @@ table, th, td {
     font-size: 35px;
 }
 #reg_box, #login_box{
-    color: #be2c26;
-    background-color: #fbe6c9;
+    color: #E89EB8;
+    background-color: #FFF0F5;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
     height: 40px;
@@ -37,10 +37,10 @@ table, th, td {
     display: block; 
 }
 a:link {
-  color: #fbe6c9;
+  color: #FFF0F5;
 }
 a:visited {
-  color: #fbe6c9;
+  color: #FFF0F5;
 }
 a:hover {
   color: #dd8f87; 

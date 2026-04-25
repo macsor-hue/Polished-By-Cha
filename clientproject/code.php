@@ -12,7 +12,7 @@ function flash(string $type, string $text): void
 }
 function redirect_index(): void
 {
-    header("Location:/clientproject/index.php");
+    header("Location:/clientproject/register.php");
     exit;
 }
 

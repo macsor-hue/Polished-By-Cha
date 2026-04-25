@@ -47,13 +47,13 @@ session_start();
         </div>
     </form>
 
-Don't have an account yet? <a href="index.php">Register here!</a>
+Don't have an account yet? <a href="register.php">Register here!</a>
 
 </body>
 </html>
 <?php
         } else {
-            header("Location: index.php");
+            header("Location: register.php");
             exit();
         }
 ?>

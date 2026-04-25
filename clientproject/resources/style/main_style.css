@@ -7,8 +7,8 @@
 }
 #welcome{
     font-size: 25px;
-    color: #af2e2d;
-    background-color: #fce7cc;
+    color: #E89EB8;
+    background-color: #FFF0F5;
     height: 40px;
     width: 100%;
     text-align: left;
@@ -18,8 +18,8 @@
 
 body, .reg{
   text-align: center;
-  color: #fce7cc;
-  background-color: #af2e2d ;
+  color: #FFF0F5;
+  background-color: #E89EB8 ;
 }
 
 #username, #password{
