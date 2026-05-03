@@ -41,12 +41,13 @@ include("../../connect/conn/database.php");
                     <th>Duration</th>
                     <th>Update</th>
                     <th>Delete</th>
-                    <th>Payment status</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $sql = "SELECT * FROM clientinfo";
+                $id = $_SESSION['user']['id']??'';
+                $payment = "unpaid";
+                $sql = "SELECT * FROM clientinfo WHERE Customer_id = '$id'AND payment_status = '$payment' ";
                 $result = mysqli_query($conn, $sql);
                 if(!$result){
                     die("Query failed: " . mysqli_error($conn));
@@ -60,7 +61,7 @@ include("../../connect/conn/database.php");
                         <td><?php echo $row["service"]; ?></td>
                         <td><?php echo $row["price"]; ?></td>
                         <td><?php echo $row["duration"]; ?></td>
-                        <td><form action="update.php" method="post">
+                       <td><form action="update.php" method="post">
                         <input type="hidden" name="update_id" value="<?php echo $row["appointment_id"]; ?>">
                         <input type="hidden" name="action" value="update">
                         <button type="submit">Update</button>
@@ -70,19 +71,6 @@ include("../../connect/conn/database.php");
                         <input type="hidden" name="action" value="delete">
                         <button type="submit">Delete</button>
                         </form></td>
-                        
-                        <td><?php if($row["payment_status"]!="paid"){?>
-                            <form action="crudcode.php" method="post">
-                                <input type="hidden" name="pay_id" value="<?php echo $row["appointment_id"];?>">
-                                <input type="hidden" name="payment_stat" value="paid">
-                                <input type="hidden" name="action" value="payment">
-                                <button type="submit"> Pay </button>
-                                </form>
-                       <?php } 
-                            else{
-                                echo "PAID";
-                            }
-                            ?></td>
                     </tr>
                     <?php
                 }?>

@@ -10,9 +10,9 @@ function flash(string $type, string $text): void
         'text' => $text
     ];
 }
-function redirect_index(): void
+function redirect_main(): void
 {
-    header("Location:/clientproject/register.php");
+    header("Location:/clientproject/main.php");
     exit;
 }
 
@@ -30,10 +30,10 @@ $action = $_POST['action'] ?? '';
 
 if($action === ''){
     flash('err', 'No action provided.');
-    redirect_index();
+    redirect_main();
 }
-//REGISTER
 
+//REGISTER
 if($action === 'register'){
    $username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS));
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -42,17 +42,17 @@ if($action === 'register'){
     
     if(empty($username) ||empty($password)){
         flash('err' , 'Registration failed: username and password are required');
-        redirect_index();
+        redirect_main();
         exit(); 
     }
     elseif(strlen($username) < 3){
         flash('err' , 'Registration failed: username must be atleast 3 characters');
-        redirect_index();
+        redirect_main();
         exit();
     }   
     elseif(strlen($password) < 6){
         flash('err' , 'Registration failed: password must be atleast 6 characters');
-        redirect_index();
+        redirect_main();
         exit();
     } 
         $hash=password_hash($password, PASSWORD_DEFAULT);
@@ -60,7 +60,7 @@ if($action === 'register'){
         $stmt = $conn->prepare("INSERT INTO accinfo (username, pass) VALUES (?, ?)");
     if(!$stmt){
         flash('err' , 'Registration failed: database error');
-        redirect_index();
+        redirect_main();
         exit();
     }
 
@@ -78,7 +78,7 @@ if($action === 'register'){
 }
   
      $stmt->close();
-    redirect_index();
+    redirect_main();
     exit();
 }
 
@@ -121,7 +121,7 @@ if($action === 'login'){
             'username' => $username
         ];
         flash('ok', 'Login successful!');
-        redirect_index();
+        redirect_main();
         exit();
     } else {
         flash('err', 'Login failed: invalid username or password');
@@ -136,7 +136,7 @@ if($action === 'logout'){
     unset($_SESSION['user']);
     session_regenerate_id(true);
     flash('ok', 'Logout successful!');
-    redirect_index();
+    redirect_main();
 }
 
 
@@ -165,7 +165,7 @@ if($action === 'admin'){
     }
     else{
         flash('err','Sorry, permission Invalid');
-        redirect_index();
+        redirect_main();
         exit();
     }
     

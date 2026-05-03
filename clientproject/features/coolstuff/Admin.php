@@ -21,7 +21,7 @@ if (!empty($_SESSION['flash'])){
     <link rel="icon" type="image/x-icon" href="resources/style/photos/header_icon.png">
 </head>
 <body>
-     <div><a href=" /clientproject/index.php"><button>Home</button></a></div>
+     <div><a href=" /clientproject/main.php"><button>Home</button></a></div>
 
      <div>
         <table>
@@ -30,6 +30,7 @@ if (!empty($_SESSION['flash'])){
                 <th>Id</th>
                 <th>Name</th>
                 <th>Registration date</th>
+                <th>Current Admin Permission</th>
                  <th>Permissions</th>
                 </tr>
             </thead>
@@ -46,14 +47,23 @@ if (!empty($_SESSION['flash'])){
                         <td><?php echo $row["id"]; ?></td>
                         <td><?php echo $row["username"]; ?></td>
                         <td><?php echo $row["reg_date"]; ?></td>
+                        <td><?php echo $row["permission"];?></td>
                        <td>
+                           <form action="feature_code.php" method="POST">
+                           <input type="hidden" name="id" value="<?php echo $row["id"];?>">
+                           <input type="hidden" name="action" value="permit">
                         Admin permission: <br>
-                        <input type="checkbox" name="permission" value="yes"><br>
-                         
+                        <select name="permission" id="permission">
+                            <option value="no">?</option>
+                            <option value="yes">yes</option>
+                            <option value="no">no</option>
+                        </select>
+                        <button type="submit">Permit</button>
+                        </form>
                        </td>
                     </tr>
-                    <?php
-                }?>
+                 <?php
+                 }?>
       </tbody>
   </table>
     </div>

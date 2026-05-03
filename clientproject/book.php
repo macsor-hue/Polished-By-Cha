@@ -5,16 +5,15 @@ session_start();
 include("connect/conn/database.php");
 
 $username = $_SESSION['user']['username'] ?? ''; 
-  $time = $_POST['time'] ?? '';
-    $day = $_POST['date'] ?? '';
-
+$time = $_POST['time'] ?? '';
+$day = $_POST['date'] ?? '';
+$id = $_SESSION['user']['id']??'';
 
 if(isset($_POST["submit"])){
-
     $customer_name = $_POST["customer_name"]?? '';
     $appointment_date = $_POST["appointment_date"]?? '';
     $appointment_time = $_POST['appointment_time']?? '';
-  
+    $Customer_id = $_POST['Customer_id']?? '';
     // Split service, price, and duration
     if(isset($_POST['service'])){
         $service_data = $_POST['service'];
@@ -25,11 +24,12 @@ if(isset($_POST["submit"])){
 
    
 
-$sql = "INSERT INTO clientinfo ( customer_name,appointment_date,appointment_time,service,price,duration) VALUES ('$customer_name', '$appointment_date','$appointment_time', '$service', '$price', '$duration')";
+$sql = "INSERT INTO clientinfo (Customer_id,customer_name,appointment_date,appointment_time,service,price,duration) VALUES ('$Customer_id','$customer_name', 
+'$appointment_date','$appointment_time', '$service', '$price', '$duration')";
 $query = mysqli_query($conn, $sql);
 
 if($query){ 
-  header("Location: index.php");
+  header("Location: main.php");
   exit();
 }
 
@@ -50,6 +50,7 @@ if($query){
         <form action="book.php" method="POST">
             
             <input type="hidden" name="customer_name" value="<?php echo $username ?>" required><br>
+              <input type="hidden" name="Customer_id" value="<?php echo $id ?>" required><br>
            <input type="hidden" name="appointment_time" value="<?php echo $time ?>">
            <input type="hidden" name="appointment_date" value="<?php echo $day ?>">
             <label for="Services">Services:</label><br>

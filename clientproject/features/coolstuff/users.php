@@ -27,7 +27,6 @@ if (!empty($_SESSION['flash'])){
     <link rel="icon" type="image/x-icon" href="../../resources/style/photos/header_icon.png">
 </head>
 <body id="update_body">
-    <form action="feature_code.php" method="POST">
         <nav class="navbar">
             <div class="navdiv">
                 <div class="update-nav">
@@ -36,12 +35,14 @@ if (!empty($_SESSION['flash'])){
                 </div>
                 <div class="nav_home">
                     <ul>
-                        <li><a href="/clientproject/index.php">Home</a></li>
+                        <li><a href="/clientproject/main.php">Home</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="update_info">
+    
+    <form action="feature_code.php" method="POST">
+           <div class="update_info">
             <h3>You can change either username or password only, or both</h3><br>
             <input type="hidden" name="action" value="users">
             <label for="username">Username:</label>

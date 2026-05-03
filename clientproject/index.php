@@ -15,7 +15,7 @@
             <h1 class="desc_brand">Polished By Cha!</h1>
             <h2>life isn't perfect, but your nails can be</h2>
             <div class="landing_button">
-                <a href="index.php">REGISTER AND BOOK AN APPOINTMENT NOW</a>
+                <a href="main.php">REGISTER AND BOOK AN APPOINTMENT NOW</a>
             </div>
         </div>
 
