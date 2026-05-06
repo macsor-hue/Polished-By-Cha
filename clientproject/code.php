@@ -68,7 +68,7 @@ if($action === 'register'){
 
    try {
     $stmt->execute();
-    flash('ok', 'Registration Successful! You can now log in');
+        flash('ok', 'Registration Successful! You can now log in');
 } catch (mysqli_sql_exception $e) {
     if ($e->getCode() === 1062) {
         flash('err', 'Registration failed: username already exists');

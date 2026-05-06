@@ -44,8 +44,20 @@
         </div>
     </section>
     <section id="about" class="about">
-        <div class="about_content">
-            <h1 class="about_title">About Us</h1>
+        <div class="about_container">
+            <div class="about_info">
+                <h1 class="about_title">About Us</h1>
+                <h2>📍 Located at Blumentritt Street, Tigpalas, San Miguel, Bulacan</h2>
+                <h2>📞 0907-754-1010</h2>
+                <h2>📧 krishajoy183@gmail.com</h2>
+            </div>
+            <div class="about_content">
+                <h3>We are dedicated to providing beautiful, high-quality nail care</h3>
+                <h3>that helps you feel confident and refreshed.</h3>
+                <h3>Whether you're looking for a simple clean look or stylish nail art,</h3>
+                <h3>we're here to bring your ideas to life </h3>
+                <h3>in a comfortable and friendly environment.</h3>
+            </div>
         </div>
     </section>
     <?php include 'includes/footer.php'; ?>

@@ -1,41 +1,50 @@
 *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
-.nav_cont{
-  display: inline-flex;
-  justify-content: left;
+html{
+    scroll-behavior: smooth;
 }
-#dashboard_body{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #FFF0F5;
-  background-color: #E89EB8;
+.logo-img {
+  margin-top: -2px;
+  height: 85px;   
+  width: auto; 
+  border: 3px solid #FFF0F5; 
+  border-radius: 87%;
+}
+.container {
+  display: flex;
+  align-items: center; 
+  justify-content: flex-start;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
-.navbar{
+#brand_name{
+  color: #960018;
+  font-size: 28px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-color: #FFF0F5;
-  text-align: left ;
-  padding-right: 15px;
-  padding-left: 15px;
-  width: 100%;
-  box-sizing: border-box;
+  text-align: left;
 }
-.navdiv{
-  align-items: left;
-  justify-content: flex-start;
-}
-.float-img {
-  float: left;
-  margin-top: -2px;
-  height: 100px;   
-  width: auto;   
-}
-#welcome{
-  color: #E89EB8;
-  font-size: 30px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  
+.container a {
+  display: flex;
+  align-items: center; 
+  gap: 10px;   
 }
 
+.register_header, .login_header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 10%;
+    background: #E89EB8;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    z-index: 100;
+    box-shadow: 0px 2px 15px #220106a4;
+}

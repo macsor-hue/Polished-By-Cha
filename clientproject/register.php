@@ -15,38 +15,43 @@ $stmt=$conn->prepare("SELECT permission FROM accinfo WHERE username = ? LIMIT 1"
     $result=$stmt->get_result();
     $user = $result->fetch_assoc();
     
-    if (!empty($_SESSION['flash'])){
-        $type = $_SESSION['flash']['type'];
-        $text = $_SESSION['flash']['text'];
-
-        echo "<div class='msg " . htmlspecialchars($type) . "'>" . htmlspecialchars($text). "</div>";
-
-        unset($_SESSION['flash']);
-    }
-    
-        if(empty($_SESSION['user'])){
     ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="resources/style/header.css">
+    <link rel="stylesheet" href="resources/style/register_header.css">
     <link rel="stylesheet" href="resources/style/style.css">
+    <link rel="stylesheet" href="resources/style/alerts.css">
+    <link rel="stylesheet" href="resources/style/sign_footer.css">
     <title>Cha's Nails</title>
     <link rel="icon" type="image/x-icon" href="resources/style/photos/header_icon.png">    
 </head>
-<body id="register">
-    <form action="code.php" method="POST">
-        <nav class="navbar">
-            <div class="navdiv">
-                <div class="nav_cont">
-                    <input type="hidden" name="action" value="register">
-                     <img src="resources/style/photos/logo.jpg" alt="Image of Logo" class="float-img">
-                    <h2 id="welcome">Welcome to Polished By Cha</h2>
-                </div>
+<body>
+    <?php if (!empty($_SESSION['flash'])): ?>
+        <input type="checkbox" id="toggle-close" checked hidden>
+        <div class="alert_overlay">
+            <div class="alert_text <?php echo htmlspecialchars($_SESSION['flash']['type']); ?>">
+                <p>
+                    <?php echo htmlspecialchars($_SESSION['flash']['text']); ?>
+                </p>
+                <label for="toggle-close" class="close-overlay">
+                 OK
+                </label>
             </div>
-        </nav>
+        </div>
+    <?php unset($_SESSION['flash']); endif; ?>
+    <form action="code.php" method="POST">
+        <input type="hidden" name="action" value="register">
+        <header class="register_header"> 
+            <div class="container">
+                 <a href="#" >
+                    <img src="resources/style/photos/header_icon.png" alt="Image of Logo" class="logo-img">
+                    <h2 id="brand_name">Polished By Cha</h2>
+                </a>
+            </div>
+    </header>
         <div class="reg_info">
             
                 <h2 id="reg_text">Register</h2><br>

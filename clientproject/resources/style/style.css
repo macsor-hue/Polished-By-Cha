@@ -1,34 +1,174 @@
-*{padding: auto;
-margin: auto;}
+
 table, th, td {
     border-collapse: collapse;
     width: 600px;
     text-align: center;
     border: 1px solid black;
 }
-#register, #login{
-    margin: 0;
-    padding: 0;
+.reg_info, .update_info{
+    background-image:linear-gradient(to right,#fff2a770, #fff0f500), 
+                     url('photos/log_background.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 0 10%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login_info{
+    background-image:linear-gradient(to left,#fff2a770, #fff0f500), 
+                     url('photos/log_background.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 0 10%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.reg_content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    height: 60%;
+    width: 1200px;
+    background-color: #FFF0F5;
+    border: 0px solid #5c020f;
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0px 0px 50px 5px #5c0210be;
+    border-radius: 30px;
+    flex-wrap: wrap;
+    align-content: stretch;
+    overflow: hidden;
+}
+.login_content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    height: 60%;
+    width: 1200px;
+    background-color: #5c020f;
+    border: 0px solid #FFF0F5;
+    text-align: center;
+    box-shadow: 0px 0px 50px 5px #5c0210be;
+    border-radius: 30px;
+    flex-wrap: wrap;
+    align-content: stretch;
+    overflow: hidden;
+}
+.reg_inside{
+    align-self: center;
+    color: #960018;
+}
+.login_inside{
+    align-self: center;
     color: #FFF0F5;
-    background-color: #E89EB8;
 }
-.reg_info, .login_info, .update_info{
+.reg_inside:nth-child(1) {
+    background-image:linear-gradient(to top right,#5c020f,#5c0210bd, #fff0f541), 
+                    url('photos/nail_art.png');
+    background-size: cover;
+    background-position: 0px 0px;
+    width: 35%;
+    height: 100%;
+}
+.login_inside:nth-child(1){
+    background-image:linear-gradient(to top right,#FFF0F5,#fff0f596, #fff0f541), 
+                    url('photos/nail_art.png');
+    background-size: cover;
+    background-position: 0px 0px;
+    width: 35%;
+    height: 100%;
     
-    padding-top: 80px;
-    text-align: center;
 }
-#reg_text, #login_text{
+.reg_inside:nth-child(2) {
+    border: 0px solid #5c020f;
+    border-radius: 27px;
+    flex-grow: 1;
+    height: 100%;
+    margin-left: -20px;
+    z-index: 1;
+    background-color: #FFF0F5;
+}
+.login_inside:nth-child(2){
+    border: 0px solid #FFF0F5;
+    border-radius: 27px;
+    flex-grow: 1;
+    height: 100%;
+    margin-left: -20px;
+    z-index: 1;
+    background-color: #5c020f;
+}
+.brand-in{
+    font-size: 25px;
+    margin-top: 13px;
+    margin-left: 18px;
+    text-align: left;
+    color: #FFF0F5;
+}
+.brand-container{
+    font-size: 20px;
+    margin-top: 95%;
+    margin-left: 9%;
+    text-align: left;
+    color: #FFF0F5;
+}
+.brand-in-login{
+    font-size: 25px;
+    margin-top: 13px;
+    margin-left: 18px;
+    text-align: left;
+    color: #5c020f;
+}
+.brand-container-login{
+    font-size: 20px;
+    margin-top: 95%;
+    margin-left: 9%;
+    text-align: left;
+    color: #5c020f;
+}
+.tagline_in{
+    font-weight: lighter;
+   
+}
+.info_container{
+    margin-top: 15%;
+}
+#reg_text{
+    color: #960018;
     font-size: 35px;
 }
-#reg_box, #login_box{
-    color: #E89EB8;
-    background-color: #FFF0F5;
+#login_text{
+    color: #FFF0F5;
+    font-size: 35px;
+}
+#reg_box{
+    color: #FFF0F5;
+    background-color: #960018;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: bold;
     height: 40px;
     width: 100px;
+    border: none;
+    border-radius: 8px;
+}
+#login_box{
+    color: #960018;
+    background-color: #FFF0F5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    height: 40px;
+    width: 100px;
+    border: none;
+    border-radius: 8px;
+
 }
 #username, #password {
     height: 25px;
@@ -37,12 +177,12 @@ table, th, td {
     display: block; 
 }
 a:link {
-  color: #FFF0F5;
+  color: #5c020f;
 }
 a:visited {
-  color: #FFF0F5;
+  color: #e68e7e;
 }
 a:hover {
-  color: #dd8f87; 
+  color: #d40427; 
 }
 
