@@ -60,6 +60,6 @@ include("../../connect/conn/database.php");
             </form>
         </div>
     </div>
-    <?php include '../includes/admin_footer.php'; ?>
+    <?php include '../../includes/admin_footer.php'; ?>
 </body> 
 </html>
