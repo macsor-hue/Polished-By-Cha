@@ -1,3 +1,4 @@
+/*Landing Page global reset styling*/
 *{
     margin: 0;
     padding: 0;
@@ -5,9 +6,13 @@
     text-decoration: none;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+/*Landing Page smooth scrolling behavior*/
 html{
     scroll-behavior: smooth;
 }
+
+/*Landing Page logo image styling*/
 .logo-img {
   margin-top: -2px;
   height: 85px;   
@@ -15,24 +20,30 @@ html{
   border: 3px solid #FFF0F5; 
   border-radius: 87%;
 }
+
+/*Landing Page header link and logo container alignment*/
 .container a {
   display: flex;
   align-items: center; 
   gap: 10px;   
 }
+
+/*Landing Page header navigation bar*/
 .landing_header{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 15px 10%;
-    background: #E89EB8;
+    background: linear-gradient(to right, #E89EB8, #F6D2DE);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
     box-shadow: 0px 2px 15px #220106a4;
 }
+
+/*Landing Page navigation links styling*/
 .landing_navbar a{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
@@ -41,44 +52,66 @@ html{
     margin-left: 25px;
     transition: .2s;
 }
+
+/*Landing Page navigation hover and active state*/
 .landing_navbar a:hover, 
 .landing_navbar a.active {
     color:#FFF0F5;
 }
+
+/*Landing Page brand name styling in header*/
 #brand_name{
     color: #960018;
     font-size: 28px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: left;
 }
+
+
+
+
+
+
+
+
+/*Landing Page hero section background*/
 .home{
     background-image:linear-gradient(to right,#FFF0F5,rgba(0,0,0,0)), 
                     url('photos/home_bg.png');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     padding: 0 10%;
 }
+
+/*Landing Page hero text container*/
 .home_content{
     max-width: 700px;
     text-align: left;
 }
+
+/*Landing Page hero main heading*/
 .home_content h1{
     font-size: 60px;
     font-weight: 700;
-
 }
+
+/*Landing Page brand highlight text in hero*/
 .home_content .desc_brand{
     font-size: 80px;
     color: #960018;
 }
+
+/*Landing Page hero button container*/
 .home_content .landing_button{
     margin-top: 40px;
     width: 475px;
     height: 75px;
 }
+
+/*Landing Page hero call-to-action button*/
 .landing_button a{
     position: relative;
     display: inline-flex;
@@ -100,153 +133,316 @@ html{
 
 
 
-.services{
-    background-color: #220106;
+
+/*Services section background styling*/
+#services{
+    padding-top: 120px;
+    background-image: linear-gradient(to bottom right, #220106, #220106, #960018, #964b00);
+}
+
+/*Services section title styling*/
+.services_title{
+    color: #fff9fb;
+    text-align:center;
+    margin-bottom: -120px;
+    margin-right: 512px;
+    padding-right: 16px;
+}
+
+/*Services section decorative image*/
+.services_photo{
+    height: 689px;
+    width:auto;
+    margin-left: -1200px;
+    background-color:none ;
+    float: right;
+    transform: scaleX(-1);
+    opacity: 0.64;
+}
+
+/*Services section layout container*/
+.services_flex{
+    background-color: none;
+    width: 1440px;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 100px;
+    padding-top: 320px;  
+}
+
+/*Services section inner container alignment*/
+.services_container{
+    height: 20vh;
+    display: flex;
+    align-items: end;
+    padding-bottom: 120px;
+    justify-content: center;
+}
+
+/*Services items wrapper container*/
+.services_info{
+    font-size: 10px;
+    display: flex;
+    color: #fff9fb;
+    gap: 72px;
+}
+
+/*Services individual service card container*/
+.services_in{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/*Services service title styling*/
+.services_in h1{
+    color: #ffe0a2;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/*Services service price styling*/
+.services_in h3{
+    color: #fff9fb;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: lighter;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+/*Services icon/image styling*/
+#nails{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 16px;
+    filter: invert(100%);
+}
+
+/*Services specific alignment fix for gel removal icon*/
+.gel_remove{
+    margin-left: 50px;
+}
+
+/*Services avail button styling*/
+.availBTN{
+    font-size: 24px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    border: 0px solid black;
+    border-radius: 55px;
+    width: 120px;
+    background-color: #fff9fb;
+    color: #220106;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+/*Services avail button hover effect*/
+.availBTN:hover{
+    transform: translateY(-5px);
+    background-color:#f5c52a;
+    color: #220106;
+}
+
+.services_carousel{
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.carousel_track{
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel_img{
+    width: 100%;
+    flex-shrink: 0;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* Buttons */
+.carousel_btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(150,0,24,0.7);
+    color: white;
+    border: none;
+    font-size: 30px;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 50%;
+}
+
+.carousel_btn.prev{
+    left: 10px;
+}
+
+.carousel_btn.next{
+    right: 10px;
+}
+
+.carousel_btn:hover{
+    background: rgba(150,0,24,0.9);
+}
+
+
+
+
+/*About section main container*/
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFF4F7;
+    height: 65vh;
+}
+
+/*About section title styling*/
+.about_title{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 22px;
+    color: #960018;
+    text-align:center;
+    margin-bottom: -120px;
+}
+
+/*About section decorative image*/
+.about_photo{
+    opacity: 75%;
+    height: 598px;
+    width:auto;
+    margin-right: -1505px;
+    background-color: none ;
+    float: left;
+}
+
+/*About section layout container*/
+.about_flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1440px;
+    height: 65vh;
+}
+
+/*About section content panel container*/
+.about_container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    height: 60%;
+    width: 1000px;
+    background-color: none;
+    border: 0px solid #5c020f;
+    text-align: center;
+    box-shadow: 0px 0px 13px 3px #5c0210be;
+    border-radius: 30px;
+    flex-wrap: wrap;
+    align-content: stretch;
+    overflow: hidden;
+}
+
+/*About section content block styling*/
+.about_content{
+    align-self: center;
+    color: #960018;
+}
+
+/*About section contact information side*/
+.about_content:nth-child(1) {
+    letter-spacing: 1px;
+    text-align: left;
+    background-color: #FFF4F7;
+    width: 45%;
+    height: 100%;
+    z-index: 1;
+}
+
+/*About section image/visual side panel*/
+.about_content:nth-child(2) {
+    border-left: 1px solid #0000003c;
+    flex-grow: 1;
+    height: 100%;
+    margin-left: -20px;
+    color: #FFF4F7;
+    background-image:linear-gradient(to top right,#a30018,#a3001890, #fff0f56f), 
+                        url('photos/about_photo2.png');
     background-size: cover;
     background-position: center;
-    height: 80vh;
-    display: flex;
-    align-items: top;
-    padding-left: 100px;
-    padding-top: 80px; 
-}
-.services_title{
-    font-size: 55px;
-    color: #FFF0F5;
-    text-align: center;
-}
-.img_cont{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-.img_cont h1{
-    font-size: 20px;
-    text-align: center;
-    justify-content: center;
-}
-.service_img1, .service_img2, .service_img3{
-    align-items: center;
-    margin-top: 75px;
-    border: .5px solid #000000;
-    box-shadow: 0px 1px #000000;
-    border-radius: 50px;
-    width: 550px;
-    height: 275px;
-    
 }
 
-
-
-
-
-
-.contact{
-    background: #FFF0F5;
-    color: #220106;
-    height: 80vh;
-    display: flex;
-    align-items: top;
-    justify-content: center;
-    padding: 0 10%;
-}
-.contact_title{
-    margin-top: 50px;
-    font-size: 65px;
-    text-align: center;
-}
-.contact_cont{
-    margin-top: 50px;
-    background-color: #FFF0F5;
-    border: 1px hidden #5c020f;
-    box-shadow: 0px 0px 75px 5px #daa1a1;
-    width: 1500px;
-    height: 600px; 
-}
-.contact_content{
-    margin-top: 25px;
-    align-items: center;
-
-}
-
-
-
-
-
-
-.about{
-    box-shadow: 0px -1px 7px #22010648;
-    background: #FFF0F5;
-    height: 65vh;
-    padding: 0 10%;
-}
-.about_container{
-    justify-content: left;
-    align-items: center;
-    display: flex;
-    gap: 50px;
-    flex-direction: row;
-}
-.about_title{
-    margin-bottom: 25px;
-    font-size: 55px;
-    text-align: left;
-}
-.about_content{
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #960018;
-    text-align: left;
-    font-size: 30px;
-    padding-top: 100px ;
-    justify-content: center;
-    width: 750px;
-    height: 100%;
-    align-items: center;
-    border: #000000 solid 1px;
-}
+/*About section text styling*/
 .about_info{
-    font-size: 20px;
-    padding-top: 50px;
-    justify-content: center;
-    align-items: center;
-    width: 475px;
-    height: 100%;
-    border: #000000 solid 1px;
-    text-align: right;
+    font-weight: 300;
+    max-width: 460px;
+    font-size: 26px;;
+    padding-top: 80px;
+    padding-left: 20px;
+    color: #960018 ;
 }
 
 
 
 
 
+
+
+/*Landing Page footer main container*/
 .landing_footer{
     color: #FFF0F5;
+    background: #B54D73;
     bottom: 0;
     left: 0;
     height: 200px;
     width: 100%;
     padding: 5px 10%;
-    background: #5c020f;
     align-items: center;
     justify-content:center;
     display: flex;
     z-index: 100;
 }
+
+/*Footer brand name styling*/
 #fbrand_name{
     color: #fffab4;
     font-size: 35px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: left;
 }
+
+/*Footer link container alignment*/
 .footer_container a{
     display: block;
     align-items: center;   
 }
+
+/*Footer content section spacing*/
 .footer_content{
     margin-left: 200px;
     align-items: center;
 }
+
+/*Footer navigation links styling*/
 .footer_content a{
     margin-bottom: 3px;
     display: block;
@@ -255,17 +451,21 @@ html{
     color: #FFF0F5;
     font-size: 20px;
 }
+
+/*Footer social icons styling*/
 .social_fb{
     margin-top:8px;
     width: 20px;
     height: 20px;
-
 }
+
 .social_phone{
     margin-top:8px;
     width: 20px;
     height: 20px;
 }
+
+/*Landing Page bottom footer bar*/
 .footer_bottom{
     background-color: #fffab4;
     color:#5c020f;
@@ -277,3 +477,14 @@ html{
     width: 100%;
 }
 
+/*Admin footer bottom styling variation*/
+.adminFooter_bottom{
+    background: #B54D73;
+    color: #FFF0F5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-items: center;
+    justify-content:center;
+    display: flex;
+    height: 35px;
+    width: 100%;
+}

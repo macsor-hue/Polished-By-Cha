@@ -35,6 +35,9 @@ if($query){
 
 
 }
+if (isset($_POST["cancel"])){
+    exit();
+}
 
 ?>
 
@@ -43,27 +46,110 @@ if($query){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="resources/style/user_header.css">
+    <link rel="stylesheet" href="resources/style/user_dashboard.css">
+    <link rel="stylesheet" href="resources/style/alerts.css">
+    <title>Dashboard | Polished By Cha</title>
+    <link rel="icon" type="image/x-icon" href="resources/style/photos/header_icon.png">
 </head>
 <body>
-    <div>
-        <form action="book.php" method="POST">
-            
-            <input type="hidden" name="customer_name" value="<?php echo $username ?>" required><br>
-              <input type="hidden" name="Customer_id" value="<?php echo $id ?>" required><br>
-           <input type="hidden" name="appointment_time" value="<?php echo $time ?>">
-           <input type="hidden" name="appointment_date" value="<?php echo $day ?>">
-            <label for="Services">Services:</label><br>
-            <select name="service" id="serve" required >
-                <option value="Plain Gel Polish|150|1hr" >Plain Gel Polish  (Php150)</option>
-                <option value="Nail Art Gel Polish|250|1hr30mins">Nail Art Gel Polish   (Php250)</option>
-                <option value="Plain Nail Extension|300|1hr30mins">Plain Nail Extensionh  (Php300)</option>
-                <option value="Nail Art Extension|400|2hrs">Nail Art Extension(Php350-php400)</option>
-                <option value="Gel polish/Nail Extension Removal|100|35mins">Gel polish/Nail Extension Removal(Php100)</option>
-            </select><br>
-            <button type="submit" name="submit">Submit</button>
-        </form>
+    <div class="book_overlay">
+        <div class="book_page">
+            <form action="book.php" method="POST">
+                <input type="hidden" name="customer_name" value="<?php echo $username ?>" required><br>
+                <input type="hidden" name="Customer_id" value="<?php echo $id ?>" required><br>
+            <input type="hidden" name="appointment_time" value="<?php echo $time ?>">
+            <input type="hidden" name="appointment_date" value="<?php echo $day ?>">
+                <label for="Services" class="bookServices">Services:</label><br>
+                <select name="service" id="serve" class="bookChoice" required >
+                    <option value="Plain Gel Polish|150|1hr" >Plain Gel Polish (Php150) </option>
+                    <option value="Nail Art Gel Polish|250|1hr30mins">Nail Art Gel Polish (Php250) </option>
+                    <option value="Plain Nail Extension|300|1hr30mins">Plain Nail Extension (Php300) </option>
+                    <option value="Nail Art Extension|400|2hrs">Nail Art Extension (Php350-php400) </option>
+                    <option value="Gel polish/Nail Extension Removal|100|35mins">Gel polish/Nail Extension Removal (Php100) </option>
+                </select><br>
+                <button type="submit" name="submit" class="bookSubmit">Submit</button>
+                <a href="main.php">
+                <button type="button" name="cancel" class="bookSubmit">Cancel</button>
+                </a>
+            </form>
+        </div>
     </div>
+    <?php include 'includes/customer_header.php'; ?>
+    <section id="userDashboard" class="userDashboard">
+        <div class="dashboard_flex">
+            <div class="dashboard_content">
+                <img src="resources\style\photos\hello_dashboard.png" alt="hello image">
+            </div>
+            <div class="dashboard_content">
+                <h1 class="desc_brand"> <span style="font-weight: lighter">Welcome, </span><?php echo htmlspecialchars($username); ?>!</h1>
+                <h3 class="greetings">Ready for your next nail appointment?</h3>
+            </div>
+        </div>
+    </section>
+    <div class="table_calendar">
+        <div class="table_container">
+            <div class="table_title">
+                <h1>Check what days are still available!</h1>
+            </div>
+            <div class="table_content">
+                <?php
+                    $startoftheweek = date('Y-m-d',strtotime('monday this week'));
+                    $week=[];
+                    for ($i=0;$i<7;$i++){
+                        $week[]=date('Y-m-d',strtotime("$startoftheweek+$i days"));
+                    }
+                    $times = [
+                            "9:00 AM","10:30 AM","12:00 PM","1:30 PM",
+                            "3:00 PM","4:30 PM","6:00 PM","7:30 PM"
+                    ];
+                ?>
+                <table>
+                    <thead>
+                        <th>Time</th>
+                        <?php foreach($week as $day):?>
+                        <th><?php echo date('D',strtotime($day));?><br><?php echo $day;?></th>
+                        <?php endforeach;?>
+                        </thead>
+
+                    <tbody>
+                        <?php foreach($times as $time):?>
+                        <tr>
+                            <td><?php echo $time;?></td>
+                            <?php foreach($week as $day):?>
+                            <td>
+                            <?php $dayname=date('l',strtotime($day));
+                                if(in_array($dayname,['Monday','Tuesday','Wednesday','Thursday'])){
+                                    echo"At School (Unavailable)";
+                                }
+                                else{
+                                    $stmt=$conn->prepare("SELECT * FROM clientinfo WHERE appointment_date=? and appointment_time=?");
+                                    $stmt->bind_param("ss",$day,$time);
+                                    $stmt->execute();
+                                    $result=$stmt->get_result();
+                                    if($result->num_rows>0){
+                                        echo "BOOKED";
+                                    }
+                                    else{
+                                        echo ' <form action="book.php" method="post">
+                                        <input type="hidden" name="time" value="'.$time.'">
+                                        <input type="hidden" name="date" value="'.$day.'">
+                                        <button type="submit" class="availableBtn">Available</button>
+                                        </form>';
+                                    }
+                                }
+                            ?>
+                            </td>
+                            <?php endforeach;?>
+                        </tr>
+                        <?php endforeach;?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <?php include 'includes/footer.php'; ?>
+    <?php ?>
     
     
 </body>

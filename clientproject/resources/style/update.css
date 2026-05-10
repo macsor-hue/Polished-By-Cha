@@ -1,82 +1,86 @@
 *{
     text-decoration: none;
 }
+.page_title{
+    color: #960018;
+    margin-top: 150px;
+    text-align:center;
+    margin-bottom: -100px;
+}
 
-.update-nav {
+/*Update Account nail polish design adjustment*/
+.update_photo{
+    height: 750px;
+    width:auto;
+    margin-left: -1050px;
+    background-color: #fff9fb ;
+    float: right;
+}
+/*Update Account nail polish design no.2 adjustment*/
+.update_photo2{
+    height: 782px;
+    width:auto;
+    margin-right: -1050px;
+    background-color: #fff9fb ;
+    float: left;
+}
+/*Update Account main container/background*/
+.update_flex{
+    display: flex;
+    height: 85vh;
+    background-color: #fff9fb;
+    align-items: center;
+    justify-content: center;
+
+}
+/*Update Account main container of update panel itself*/
+.update_container{
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    height: 60%;
+    width: 720px;
+    background-color: #fff9fb;
+    border: 0px solid #5c020f;
+    text-align: center;
+    box-shadow: 0px 0px 13px 3px #5c0210be;
+    border-radius: 30px;
 }
-.nav_home ul{
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
+/*Update Account instruction styling*/
+.update_text{
+    color: #960018;
+    font-size: 35px;
 }
- #update_body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/*Update Account update button styling*/
+.update_box{
     color: #FFF0F5;
-    background-color: #E89EB8;
-    margin: 0;
-    padding: 0;
-}
-.navbar{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: #FFF0F5;
-    padding-right: 15px;
-    padding-left: 15px;
-    width: 100%;
-    box-sizing: border-box;
-}
-.navdiv{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.float-img {
-    margin-top: -2px;
-    height: 100px;   
-    width: auto;   
-}
-
-li{
-    list-style: none;
-    display: inline-block;
-}
-li a{
-    color:#E89EB8;
-    font-size: 25px;
-    font-weight: bold;
-    margin-right: 25px;
-}
-button{
-    color: #E89EB8;
-    background-color:#FFF0F5;
+    background-color: #960018;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
     font-weight: bold;
-    font-size: 15px;
-    margin-left: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    width: 90px;
+    height: 40px;
+    width: 100px;
+    border: none;
+    border-radius: 8px;
 }
-#update_text{
-    color: #E89EB8;
-    font-size: 30px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.update_info{  
-    padding-top: 80px;
-    text-align: center;
+/*Update Account update button animation for interactivity*/
+.update_box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 36px #5c021071;
 }
 
-#username, #cpassword, #npassword {
-    text-align: center;
-    height: 25px;
+/*Update Account text box styling*/
+.username, .password {
+    height: 35px;
     width: 280px; 
-    margin: 0 auto; 
-    display: block; 
+    margin: auto; 
+}
+/*Update Account text box animation for interactivity*/
+.username:focus, 
+.password:focus {
+    box-shadow: 0 0px 28px #5c021039;
+}
+/*Update Account text box labels styling*/
+.update_info{
+    color: #960018;
 }

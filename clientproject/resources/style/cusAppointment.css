@@ -1,0 +1,169 @@
+/*Customer Appointment Page global reset styling*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+
+/*Customer Appointment Page main background*/
+body{
+    background-color: #fff9fb;
+}
+
+/*Customer Appointment Page main container layout*/
+.sched_flex{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 170px 20px 80px;
+    background-color: #fff9fb;
+}
+
+/*Customer Appointment Page table container panel*/
+.sched_container{
+    width: 95%;
+    max-width: 1400px;
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(92, 2, 16, 0.12);
+}
+
+/*Customer Appointment Page table wrapper for scrolling*/
+.sched_info{
+    overflow-x: auto;
+}
+
+/*Customer Appointment Page table styling*/
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 18px;
+    overflow: hidden;
+    background: white;
+}
+
+/*Customer Appointment Page table header styling*/
+thead{
+    background: linear-gradient(to right, #E89EB8, #F6D2DE);
+}
+
+/*Customer Appointment Page table header text styling*/
+th{
+    padding: 16px;
+    font-size: 20px;
+    color: #5c0210;
+    text-align: center;
+    font-weight: bold;
+}
+
+/*Customer Appointment Page table data styling*/
+td{
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid #f1d9e2;
+    font-size: 16px;
+    color: #555;
+}
+
+/*Customer Appointment Page table row hover effect*/
+tbody tr{
+    transition: 0.25s ease;
+}
+
+/*Customer Appointment Page table row hover background*/
+tbody tr:hover{
+    background-color: #fff3f7;
+}
+
+/*Customer Appointment Page general button styling*/
+td button{
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+/*Customer Appointment Page update button styling*/
+td form button{
+    color: #fff3f7;
+    background-color: #ed2b4b9c;
+}
+
+/*Customer Appointment Page update button hover effect*/
+td form button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(150, 0, 24, 0.15);
+}
+
+/*Customer Appointment Page overlay background for update modal*/
+.update_overlay {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/*Customer Appointment Page update form container*/
+.update_page{
+    display: flex;
+    flex-direction: column ;
+    justify-content: start;
+    align-items: center;
+    padding-top: 12px;
+    height: 160px;
+    width: 360px;
+    background: linear-gradient(135deg, #f5c4d9, #ffffff);
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 0px 24px rgba(255, 36, 73, 0.466);
+}
+
+/*Customer Appointment Page update date text styling*/
+.updateDate{
+    font-size: 20px;
+    color: #960018;
+    margin-bottom: 20px;
+}
+
+/*Customer Appointment Page update service text styling*/
+.updateServices{
+    font-size: 20px;
+    color: #960018;
+    margin-bottom: 20px;
+}
+
+/*Customer Appointment Page update dropdown/input styling*/
+.updateChoice{
+    height: 25px;
+    width: auto;
+    border: none;
+    margin-top: 10px;
+    background: #ffffff;
+    font-size: 16px;
+    color: #960018;
+}
+
+/*Customer Appointment Page update submit button styling*/
+.updateSubmit{
+    margin-top: 15px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #960018, #f5c4d9);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}

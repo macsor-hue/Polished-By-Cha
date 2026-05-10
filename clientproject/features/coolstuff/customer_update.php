@@ -12,7 +12,7 @@ include("../../connect/conn/database.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../resources/style/admin_header.css">
+    <link rel="stylesheet" href="../../resources/style/user_header.css">
     <link rel="stylesheet" href="../../resources/style/update.css">
     <link rel="stylesheet" href="../../resources/style/alerts.css">
 
@@ -33,7 +33,7 @@ include("../../connect/conn/database.php");
             </div>
         </div>
     <?php unset($_SESSION['flash']); endif; ?>
-     <?php include '../../includes/adminHeader_features.php'; ?>
+     <?php include '../../includes/customerHeader_features.php'; ?>
     
     <div class="page_title">
         <h1>Account Settings</h1>
@@ -60,6 +60,6 @@ include("../../connect/conn/database.php");
             </form>
         </div>
     </div>
-    <?php include '../includes/admin_footer.php'; ?>
+    <?php include '../../includes/footer_features.php'; ?>
 </body> 
 </html>

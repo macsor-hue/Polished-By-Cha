@@ -1,0 +1,116 @@
+/*Sales Report Page main background and container*/
+.sales {
+    background: #fff9fb;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding-bottom: 60px;
+    padding-top: 150px;
+    
+}
+
+/*Sales Report Page title container*/
+.page_title {
+    width: 92%;
+    max-width: 1200px;
+    color: #960018;
+}
+
+/*Sales Report Page main container for sales cards and reports*/
+.sales_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    width: 92%;
+    max-width: 1200px;
+     align-items: start;
+    grid-auto-rows: minmax(180px, auto);
+}
+
+/*Sales Report Page sales report cards container*/
+.sales_info {
+    background: white;
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 4px 12px rgba(150, 0, 24, 0.10);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: 0.25s ease;
+}
+
+/*Sales Report Page hover effect for sales cards*/
+.sales_info:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(150, 0, 24, 0.18);
+}
+
+/*Sales Report Page highlighted total sales card*/
+.highlight-sales {
+    background: linear-gradient(135deg, #960018, #f5c4d9);
+    color: white;
+    transform: scale(1.03);
+    box-shadow: 0 12px 28px rgba(150, 0, 24, 0.25);
+}
+
+/*Sales Report Page total sales amount text styling*/
+.highlight-sales .totalSalesAmt {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/*Sales Report Page date input and select styling*/
+.sales input[type="date"],
+.sales select {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    margin-top: 6px;
+}
+
+/*Sales Report Page button styling*/
+.sales button {
+    margin-top: 10px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f5c4d9, #ffffff);
+    color: #960018;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/*Sales Report Page button hover animation*/
+.sales button:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
+}
+
+/*Sales Report Page table styling*/
+.sales table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/*Sales Report Page table header and data styling*/
+.sales th,
+.sales td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+/*Sales Report Page table header background styling*/
+.sales thead {
+    background: #f5c4d9;
+}

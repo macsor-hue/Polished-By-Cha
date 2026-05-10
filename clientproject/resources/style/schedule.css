@@ -1,84 +1,108 @@
-
-
+/*Appointment Schedule Page remove default text decoration*/
 *{
     text-decoration: none;
 }
 
-.schedule-nav {
+/*Appointment Schedule Page title container*/
+.page_title{
     display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.nav_home ul{
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-}
- #schedule_body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #FFF0F5;
-    background-color: #E89EB8;
-    margin: 0;
-    padding: 0;
-}
-.navbar{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: #FFF0F5;
-    padding-right: 15px;
-    padding-left: 15px;
-    width: 100%;
-    box-sizing: border-box;
-}
-.navdiv{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 5px;
+    color: #960018;
+    margin-top: 150px;
+    text-align:center;
+    margin-bottom: -100px;
 }
 
-.float-img {
-    margin-top: -2px;
-    height: 100px;   
-    width: auto;   
+
+/*Appointment Schedule Page main background*/
+body{
+    background-color: #fff9fb;
 }
 
-li{
-    list-style: none;
-    display: inline-block;
-}
-li a{
-    color:#E89EB8;
-    font-size: 25px;
-    font-weight: bold;
-    margin-right: 25px;
-}
-button{
-    color: #E89EB8;
-    background-color:#FFF0F5;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bold;
-    font-size: 15px;
-    margin-left: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    width: 90px;
-}
-#sched_text{
-    color: #E89EB8;
-    font-size: 30px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+/*Appointment Schedule Page main container for schedule table*/
+.sched_flex{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 135px 20px 80px;
+    background-color: #fff9fb;
 }
 
+/*Appointment Schedule Page schedule panel container*/
+.sched_container{
+    width: 95%;
+    max-width: 1400px;
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(92, 2, 16, 0.12);
+}
+
+/*Appointment Schedule Page table responsive container*/
 .sched_info{
-    padding-top: 80px;
-    margin: 0 auto; 
-    display: block;
+    overflow-x: auto;
 }
-.sched_info table, th, td {
-    
+
+/*Appointment Schedule Page table styling*/
+table{
+    width: 100%;
     border-collapse: collapse;
-    width: 600px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: white;
+}
+
+/*Appointment Schedule Page table header background styling*/
+thead{
+    background: linear-gradient(to right, #E89EB8, #F6D2DE);
+}
+
+/*Appointment Schedule Page table header text styling*/
+th{
+    padding: 16px;
+    font-size: 20px;
+    color: #5c0210;
     text-align: center;
-    border: 1px solid black;
+    font-weight: bold;
+}
+
+/*Appointment Schedule Page table data styling*/
+td{
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid #f1d9e2;
+    font-size: 16px;
+    color: #555;
+}
+
+/*Appointment Schedule Page table row transition effect*/
+tbody tr{
+    transition: 0.25s ease;
+}
+
+/*Appointment Schedule Page table row hover effect*/
+tbody tr:hover{
+    background-color: #fff3f7;
+}
+
+/*Appointment Schedule Page buttons styling*/
+.appointmentBtn{
+    color: #fff3f7;
+    background-color: #ed2b4b9c;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+/*Appointment Schedule Page button hover animation*/
+.appointmentBtn:hover{
+transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(150, 0, 24, 0.15);
 }

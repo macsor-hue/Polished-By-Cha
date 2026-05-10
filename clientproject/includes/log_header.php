@@ -6,9 +6,9 @@
         </a>
     </div>
     <nav class="landing_navbar">
-        <a href="#home">HOME</a>
-        <a href="#services">SERVICES</a>
-        <a href="#about">ABOUT</a>
+        <a href="index.php#home">HOME</a>
+        <a href="index.php#services">SERVICES</a>
+        <a href="index.php#about">ABOUT</a>
         <a href="login.php">LOGIN</a>
         <a href="main.php">REGISTER</a>
     </nav>

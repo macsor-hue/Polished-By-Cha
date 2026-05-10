@@ -1,3 +1,4 @@
+/*Global Styling For uniformity*/
 *{
     margin: 0;
     padding: 0;
@@ -8,39 +9,49 @@
 html{
     scroll-behavior: smooth;
 }
-.logo-img {
-  margin-top: -2px;
-  height: 85px;   
-  width: auto; 
-  border: 3px solid #FFF0F5; 
-  border-radius: 87%;
-}
-.container a {
-  display: flex;
-  align-items: center; 
-  gap: 5px;   
-}
+
+
+/*Admin Header/navbar flexbox container and background*/
 .admin_header{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 15px 10%;
-    background: #E89EB8;
+    background: linear-gradient(to right, #E89EB8, #F6D2DE);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    box-shadow: 0px 2px 15px #220106a4;
+    box-shadow: 0px 2px 15px #22010624;
 }
-.admin_navbar1 {
+
+/*Admin Header/navbar brand logo*/
+.logo-img {
+    margin-top: -2px;
+    height: 85px;   
+    width: auto; 
+    border: 3px solid #FFF0F5; 
+    border-radius: 87%;
+}
+/*Admin Header/navbar brand name*/
+#brand_name{
+    color: #960018;
+    font-size: 28px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: left;
+}
+/*Admin Header/navbar brand logo and brand name container for micro adjustment */
+.container a {
     display: flex;
-    flex-direction: row;
-    gap: 20px;
+    align-items: center; 
+    gap: 5px;   
 }
-.admin_navbar1 a, .admin_navbar2{
-    display: inline-block;
-    align-items: center;
+
+/*Admin Header/navbar buttons
+(Navigation Buttons and Action Buttons) 
+container for placement*/
+.admin_navbar{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
     color: #960018;
@@ -48,123 +59,55 @@ html{
     gap: 25px;
     transition: .2s;
 }
-
-.admin_navbar1 a:hover, 
-.admin_navbar1 a.active,
-.admin_navbar2 a:hover, 
-.admin_navbar2 a.active  {
+/*Admin Header/navbar navigation buttons/text 
+themselves container for uniformity, 
+HOME-ACCOUNT-SCHEDULE-SALES*/
+.containerBtn{
+    font-size: 23px;
+    margin-left: 200px;
+    display: flex;
+    align-items: center; 
+    gap: 30px;  
+}
+/*Admin Header/navbar navigation buttons/text 
+animation for interactivity*/
+a:link, a:visited {
+    color:#5c020f;
+}
+a:hover, 
+a.active  {
     color:#FFF0F5;
 }
-#brand_name{
-    color: #960018;
-    font-size: 28px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: left;
-}
 
 
 
-
-
-.home{
-    background-image:linear-gradient(to right,#FFF0F5,rgba(0,0,0,0)), 
-                    url('photos/home_bg.png');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
+/*Admin Header/navbar Action Buttons 
+themselves container for uniformity, 
+ADMIN-LOGOUT*/
+.containerActn{
     display: flex;
-    align-items: center;
-    padding: 0 10%;
+    align-items: center; 
+    gap: 10px;
 }
-.home_content{
-    max-width: 700px;
-    text-align: left;
-}
-.home_content h1{
-    font-size: 60px;
-    font-weight: 700;
-
-}
-.home_content .desc_brand{
-    font-size: 80px;
-    color: #960018;
-}
-.home_content .landing_button{
-    margin-top: 40px;
-    width: 475px;
-    height: 75px;
-}
-.landing_button a{
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 475px;
-    height: 100%; 
-    background: #960018;
-    border: 2px solid #960018;
-    border-radius: 10px;
-    font-size: 20px;
-    color: #FFF0F5;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-
-
-
-
-
-
-.landing_footer{
-    color: #FFF0F5;
-    bottom: 0;
-    left: 0;
-    height: 200px;
-    width: 100%;
-    padding: 5px 10%;
-    background: #960018;
-    align-items: center;
-    justify-content:center;
-    display: flex;
-    z-index: 100;
-}
-#fbrand_name{
-    color: #fffab4;
-    font-size: 35px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: left;
-}
-.footer_container a{
-    display: block;
-    align-items: center;   
-}
-.footer_content{
-    margin-left: 200px;
-    align-items: center;
-}
-.footer_content a{
-    margin-bottom: 3px;
-    display: block;
-    margin-right: 75px;
+/*Admin Header/navbar Action Buttons 
+Styling, separated for precise styling*/
+.logoutBtn, .adminBtn{
+    color:#FFF0F5;
+    background-color:#960018;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
-    color: #FFF0F5;
-    font-size: 20px;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    width: 90px;
+    border: none;
 }
-.social_fb{
-    margin-top:8px;
-    width: 20px;
-    height: 20px;
 
-}
-.social_phone{
-    margin-top:8px;
-    width: 20px;
-    height: 20px;
-}
-.footer_bottom{
-    background-color: #fffab4;
-    color:#960018;
+
+/*Admin footer container*/
+.adminFooter_bottom{
+    background: #B54D73;
+    color: #FFF0F5;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     align-items: center;
     justify-content:center;

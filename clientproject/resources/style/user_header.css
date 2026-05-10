@@ -1,3 +1,5 @@
+
+/*Global Styling For uniformity*/
 *{
     margin: 0;
     padding: 0;
@@ -8,39 +10,48 @@
 html{
     scroll-behavior: smooth;
 }
-.logo-img {
-  margin-top: -2px;
-  height: 85px;   
-  width: auto; 
-  border: 3px solid #FFF0F5; 
-  border-radius: 87%;
-}
-.container a {
-  display: flex;
-  align-items: center; 
-  gap: 5px;   
-}
+
+/*Customer Header/navbar flexbox container and background*/
 .user_header{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 15px 10%;
-    background: #E89EB8;
+    background: linear-gradient(to right, #E89EB8, #F6D2DE);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    box-shadow: 0px 2px 15px #220106a4;
+    box-shadow: 0px 2px 15px #22010624;
 }
-.user_navbar1 {
+
+/*Customer Header/navbar brand logo*/
+.logo-img {
+    margin-top: -2px;
+    height: 85px;   
+    width: auto; 
+    border: 3px solid #FFF0F5; 
+    border-radius: 87%;
+}
+/*Customer Header/navbar brand name*/
+#brand_name{
+    color: #960018;
+    font-size: 28px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: left;
+}
+/*Customer Header/navbar brand logo and brand name container for micro adjustment */
+.container a {
     display: flex;
-    flex-direction: row;
-    gap: 20px;
+    align-items: center; 
+    gap: 5px;   
 }
-.user_navbar1 a, .user_navbar2{
-    display: inline-block;
-    align-items: center;
+
+/*Customer Header/navbar buttons
+(Navigation Buttons and Action Buttons) 
+container for placement*/
+.user_navbar{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
     color: #960018;
@@ -48,101 +59,85 @@ html{
     gap: 25px;
     transition: .2s;
 }
+/*Customer Header/navbar navigation buttons/text 
+themselves container for uniformity, 
+HOME-ACCOUNT-APPOINTMENTS*/
+.containerBtn{
+    font-size: 23px;
+    margin-left: 200px;
+    display: flex;
+    align-items: center; 
+    gap: 30px;  
+}
 
-.user_navbar1 a:hover, 
-.user_navbar1 a.active,
-.user_navbar2 a:hover, 
-.user_navbar2 a.active  {
+/*Customer Header/navbar navigation buttons/text 
+animation for interactivity*/
+a:link, a:visited {
+    color:#5c020f;
+}
+a:hover, 
+a.active  {
     color:#FFF0F5;
 }
-#brand_name{
-    color: #960018;
-    font-size: 28px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: left;
-}
 
 
 
-
-
-.home{
-    background-image:linear-gradient(to right,#FFF0F5,rgba(0,0,0,0)), 
-                    url('photos/home_bg.png');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
+/*Customer Header/navbar Action Buttons 
+themselves container for uniformity, 
+LOGOUT*/
+.containerActn{
     display: flex;
-    align-items: center;
-    padding: 0 10%;
+    align-items: center; 
+    gap: 10px;
 }
-.home_content{
-    max-width: 700px;
-    text-align: left;
-}
-.home_content h1{
-    font-size: 60px;
-    font-weight: 700;
-
-}
-.home_content .desc_brand{
-    font-size: 80px;
-    color: #960018;
-}
-.home_content .landing_button{
-    margin-top: 40px;
-    width: 475px;
-    height: 75px;
-}
-.landing_button a{
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 475px;
-    height: 100%; 
-    background: #960018;
-    border: 2px solid #960018;
-    border-radius: 10px;
-    font-size: 20px;
-    color: #FFF0F5;
-    font-weight: 600;
-    letter-spacing: 1px;
+/*Customer Header/navbar Action Buttons 
+Styling, separated for precise styling*/
+.logoutBtn{
+    color:#FFF0F5;
+    background-color:#960018;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    width: 90px;
+    border: none;
 }
 
 
 
-
-
-
-
+/*Customer footer container set to flexbox*/
 .landing_footer{
     color: #FFF0F5;
+    background: #B54D73;
     bottom: 0;
     left: 0;
     height: 200px;
     width: 100%;
     padding: 5px 10%;
-    background: #5c020f;
     align-items: center;
     justify-content:center;
     display: flex;
     z-index: 100;
 }
+/*Customer footer brand name container*/
 #fbrand_name{
     color: #fffab4;
     font-size: 35px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: left;
 }
+/*Customer footer brand and tagline structure*/
 .footer_container a{
     display: block;
     align-items: center;   
 }
+/*Customer footer socials container*/
 .footer_content{
     margin-left: 200px;
     align-items: center;
 }
+/*Customer footer socials links and icon structure*/
 .footer_content a{
     margin-bottom: 3px;
     display: block;
@@ -151,19 +146,22 @@ html{
     color: #FFF0F5;
     font-size: 20px;
 }
+/*Customer footer socials links, Facebook icon adjustment*/
 .social_fb{
     margin-top:8px;
     width: 20px;
     height: 20px;
 
 }
+/*Customer footer socials links, Phone icon adjustment*/
 .social_phone{
     margin-top:8px;
     width: 20px;
     height: 20px;
 }
+/*Customer footer copyright part of business*/
 .footer_bottom{
-    background-color: #fffab4;
+     background-color: #fffab4;
     color:#5c020f;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     align-items: center;

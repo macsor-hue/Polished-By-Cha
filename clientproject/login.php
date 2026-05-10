@@ -24,11 +24,11 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="resources/style/header.css">
-    <link rel="stylesheet" href="resources/style/style.css">
+     <link rel="stylesheet" href="resources/style/landing.css">
+    <link rel="stylesheet" href="resources/style/sign.css">
     <link rel="stylesheet" href="resources/style/alerts.css">
     <link rel="stylesheet" href="resources/style/sign_footer.css">
-    <title>Cha's Nails|Login Page</title>
+    <title>Login Page | Polished By Cha</title>
     <link rel="icon" type="image/x-icon" href="resources/style/photos/header_icon.png">
 </head>
 <body>
@@ -45,19 +45,9 @@ session_start();
             </div>
         </div>
     <?php unset($_SESSION['flash']); endif; ?>
+    <?php include 'includes/log_header.php'; ?>
     <form action="code.php" method="POST">
         <input type="hidden" name="action" value="login">
-        <header class="login_header"> 
-            <div class="container">
-                 <a href="#" >
-                    <img src="resources/style/photos/header_icon.png" alt="Image of Logo" class="logo-img">
-                    <h2 id="brand_name">Polished By Cha</h2>
-                </a>
-            </div>
-            <nav class="landing_navbar">
-            <a href="index.php">HOME</a>
-    </nav>
-        </header>
         <section class="login_info">
             <div class="login_content">
                 <div class="login_inside">
@@ -69,13 +59,13 @@ session_start();
                 </div>
                 <div class="login_inside">
                     <div class="info_container">
-                        <h2 id="login_text">Login</h2><br>
+                        <h2 class="login_text">Login</h2><br>
                         <label for="username">Username:</label>
-                        <input type="text" id="username" name="username"><br>
+                        <input type="text" class="username" name="username"><br>
                         <label for="password">Password:</label>
-                        <input type="password" id="password" name="password"><br>
-                        <button type="submit" id="login_box" name="submit">LOGIN</button><br><br>
-                        Don't have an account yet? <a href="main.php">Register here!</a>
+                        <input type="password" class="password" name="password"><br>
+                        <button type="submit" class="login_box" name="submit">LOGIN</button><br><br>
+                        Don't have an account yet? <a href="main.php" class="register_link">Register here!</a>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+/*Alert System overlay background (dark screen behind popup)*/
 .alert_overlay {
     position: fixed;
     top: 0;
@@ -11,6 +12,7 @@
     z-index: 9999;
 }
 
+/*Alert System main message container*/
 .alert_text {
     font-size: 25px;
     background: white;
@@ -23,24 +25,29 @@
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
+/*Alert System success message border styling*/
 .alert_text.ok {
     border-top: 6px solid #6FBF73;
 }
 
+/*Alert System success message text styling*/
 .alert_text.ok p {
     color: #6FBF73;
     font-weight: bold;
 }
 
+/*Alert System error message border styling*/
 .alert_text.err {
     border-top: 6px solid #C44536;
 }
 
+/*Alert System error message text styling*/
 .alert_text.err  {
     color: #C44536;
     font-weight: bold;
 }
 
+/*Alert System close button styling*/
 .close-overlay {
     display: flex;
     justify-content:center;
@@ -53,6 +60,7 @@
     cursor: pointer;
 }
 
+/*Alert System toggle checkbox behavior (hide alert when unchecked)*/
 #toggle-close:not(:checked) ~ .alert_overlay {
     display: none;
 }

@@ -1,0 +1,162 @@
+/*Admin Panel global reset styling*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/*Admin Panel main background*/
+body{
+    background: #fff9fb;
+    height: 100%;
+}
+
+/*Admin Panel page title section*/
+.page_title{
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 40px;
+    color: #960018;
+}
+
+/*Admin Panel main title text styling*/
+.page_title h1{
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+/*Admin Panel subtitle text styling*/
+.page_title p{
+    color: #777;
+    font-size: 16px;
+}
+
+/*Admin Panel main layout container*/
+.admin_flex{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 105px;
+}
+
+/*Admin Panel content container (table wrapper)*/
+.admin_container{
+    width: 92%;
+    max-width: 1300px;
+    background: white;
+    border-radius: 28px;
+    padding: 30px;
+    box-shadow: 0 10px 35px rgba(150, 0, 24, 0.10);
+    overflow-x: auto;
+}
+
+/*Admin Panel table structure styling*/
+table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 14px;
+}
+
+/*Admin Panel table header styling*/
+thead th{
+    background: linear-gradient(to right, #E89EB8, #F6D2DE);
+    color: #5c0210;
+    padding: 18px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/*Admin Panel table header rounded corners (left side)*/
+thead th:first-child{
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+}
+
+/*Admin Panel table header rounded corners (right side)*/
+thead th:last-child{
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+
+/*Admin Panel table row styling*/
+tbody tr{
+    background: #fff;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+}
+
+/*Admin Panel table row hover effect*/
+tbody tr:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(150,0,24,0.12);
+}
+
+/*Admin Panel table data styling*/
+tbody td{
+    padding: 20px 18px;
+    color: #555;
+    font-size: 15px;
+}
+
+/*Admin Panel table cell rounded corners (left side)*/
+tbody td:first-child{
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+/*Admin Panel table cell rounded corners (right side)*/
+tbody td:last-child{
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+/*Admin Panel highlight column (permission status)*/
+tbody td:nth-child(4){
+    font-weight: bold;
+}
+
+/*Admin Panel form layout inside table*/
+form{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/*Admin Panel dropdown select styling*/
+select{
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #f0c6d4;
+    background: #fff9fb;
+    color: #5c0210;
+    outline: none;
+    min-width: 120px;
+    transition: 0.3s ease;
+}
+
+/*Admin Panel dropdown focus effect*/
+select:focus{
+    border-color: #960018;
+    box-shadow: 0 0 0 4px rgba(150,0,24,0.08);
+}
+
+/*Admin Panel button styling*/
+button{
+    padding: 10px 18px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #960018, #c2185b);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/*Admin Panel button hover effect*/
+button:hover{
+    transform: translateY(-2px);
+    opacity: 0.92;
+    box-shadow: 0 8px 18px rgba(150,0,24,0.22);
+}
