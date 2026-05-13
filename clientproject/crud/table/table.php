@@ -1,8 +1,8 @@
 <?php
-session_start()
-?>
-<?php
+// SESSION & DATABASE INITIALIZATION
+session_start();
 include("../../connect/conn/database.php");
+// No prepared statement for logged-in user nor organized in descending since the admin will see and adjust in FCFS fashion
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +16,11 @@ include("../../connect/conn/database.php");
     <link rel="icon" type="image/x-icon" href="../../resources/style/photos/header_icon.png">
 </head>
 <body id="schedule_body">
+    <!-- =============================================
+         FLASH MESSAGE ALERT (Session-based)
+         Displays success/error alerts then clears
+         the session flash data immediately after
+    ============================================= -->
     <?php if (!empty($_SESSION['flash'])): ?>
         <input type="checkbox" id="toggle-close" checked hidden>
         <div class="alert_overlay">
@@ -29,9 +34,11 @@ include("../../connect/conn/database.php");
             </div>
         </div>
     <?php unset($_SESSION['flash']); endif; ?>
+
+
     <?php include '../../includes/adminHeader_features.php'; ?>
     <div class="page_title">
-        <h1>Appoinment Schedules</h1>
+        <h1>Appointment Schedules</h1>
         <p>Your complete overview of upcoming appointments</p>
     </div>
     <!-- CRUD table -->
@@ -48,42 +55,44 @@ include("../../connect/conn/database.php");
                             <th>Service</th>
                             <th>Price</th>
                             <th>Duration</th>
-                            <th>Update</th>
                             <th>Delete</th>
                             <th>Payment status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
+                        <?php // Query: Fetch  appointments to be displayed
                         $sql = "SELECT * FROM clientinfo";
                         $result = mysqli_query($conn, $sql);
+                        //Error handling
                         if(!$result){
                             die("Query failed: " . mysqli_error($conn));
                         }
+                        // Loop through and render each appointment row
                         while($row = mysqli_fetch_assoc($result)){
                             ?>
                             <tr>
+                                 <!-- Appointment Details -->
                                 <td><?php echo $row["customer_name"]; ?></td>
                                 <td><?php echo $row["appointment_date"]; ?></td>
                                 <td><?php echo $row["appointment_time"]; ?></td>
                                 <td><?php echo $row["service"]; ?></td>
                                 <td><?php echo $row["price"]; ?></td>
                                 <td><?php echo $row["duration"]; ?></td>
-                                <td><form action="update.php" method="post"
-                                     onsubmit="return confirm('Are you sure you want to update this appointment?');"></onsubmit>
-                                    <input type="hidden" name="update_id" value="<?php echo $row["appointment_id"]; ?>">
-                                    <input type="hidden" name="action" value="adminUpdate">
-                                    <button disabled class="appointmentBtn">Update</button>
-                                </form>
-                                </td>
-                                <td><form action="crudcode.php" method="post"
+                    
+                                 <!-- Delete Action -->                            
+                                <td><?php if($row["payment_status"]!="paid"){ ?>
+                                    <form action="crudcode.php" method="post"
                                     onsubmit="return confirm('Are you sure you want to delete this appointment?');">
                                     <input type="hidden" name="delete_id" value="<?php echo $row["appointment_id"]; ?>">
                                     <input type="hidden" name="action" value="adminDelete">
                                     <button type="submit" class="appointmentBtn">Delete</button>
                                     </form>
+                                     <?php } 
+                                    else{
+                                       echo "DISABLED";
+                                    }?>
                                 </td>
-                                
+                                 <!-- Payment Action -->
                                 <td><?php if($row["payment_status"]!="paid"){?>
                                     <form action="crudcode.php" method="post"
                                          onsubmit="return confirm('Are you sure you want to mark this as paid?');"></onsubmit>

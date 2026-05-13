@@ -68,6 +68,7 @@ HOME-ACCOUNT-SCHEDULE-SALES*/
     display: flex;
     align-items: center; 
     gap: 30px;  
+    cursor: pointer;
 }
 /*Admin Header/navbar navigation buttons/text 
 animation for interactivity*/
@@ -88,6 +89,7 @@ ADMIN-LOGOUT*/
     display: flex;
     align-items: center; 
     gap: 10px;
+    
 }
 /*Admin Header/navbar Action Buttons 
 Styling, separated for precise styling*/
@@ -101,6 +103,7 @@ Styling, separated for precise styling*/
     border-radius: 8px;
     width: 90px;
     border: none;
+    cursor: pointer;
 }
 
 

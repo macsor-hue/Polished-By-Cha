@@ -39,6 +39,9 @@
     background-position: 0px 0px;
     width: 35%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 280px;
 }
 /*Register Page main container of registration materials*/
 .reg_inside:nth-child(2) {
@@ -60,9 +63,8 @@
 }
 /*Register Page tagline on top of image*/
 .brand-container{
-    font-size: 20px;
-    margin-top: 95%;
-    margin-left: 9%;
+    font-size: 18px;
+    margin-left: 20px;
     text-align: left;
     color: #FFF0F5;
 }
@@ -82,6 +84,7 @@
     width: 100px;
     border: none;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 
@@ -129,6 +132,9 @@
     background-position: 0px 0px;
     width: 35%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:280px;
     
 }
 /*Login Page main container of registration materials*/
@@ -151,12 +157,11 @@
 }
 /*Login Page tagline on top of image container*/
 .brand-container-login{
+    margin-left: 18px;
     font-size: 20px;
-    margin-top: 95%;
-    margin-left: 9%;
     text-align: left;
     color: #5c020f;
-}
+} 
 
 .login_text{
     color: #FFF0F5;
@@ -173,6 +178,7 @@
     width: 100px;
     border: none;
     border-radius: 8px;
+    cursor: pointer;
 
 }
 
@@ -184,6 +190,10 @@
     font-weight: lighter;
    
 }
+.tagline_in2{
+    font-weight: lighter;
+   
+}
 /*Login and Register Page content container*/
 .info_container{
     margin-top: 15%;
@@ -191,12 +201,64 @@
 
 /*Login and Register Page text box and label container for position and styling*/
 .username, .password {
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 25px;
     height: 25px;
     width: 280px; 
     margin: auto; 
     display: block; 
+    padding-left: 10px;
+}
+.login_cont:hover{
+    color: #ff0357;
+}
+.login_cont:focus{
+    color: #ff0357;
+}
+.login_cont2:hover{
+    color: #ff0357;
+}
+.login_cont2:focus{
+    color: #ff0357;
 }
 
+.reg_cont:hover{
+    color: #ff0303;
+}
+.reg_cont:focus{
+    color: #ff0303;
+}
+.reg_cont2:hover{
+    color: #ff0303;
+}
+.reg_cont2:focus{
+    color: #ff0303;
+}
+
+.username_reg, .password_reg {
+    background-color: #ffffff;
+    border: 2px solid #5c020f;
+    border-radius: 25px;
+    height: 25px;
+    width: 280px; 
+    margin: auto; 
+    display: block; 
+    padding-left: 10px;
+}
+
+.username:hover, .password:hover{
+    border:2px solid #ff0357;
+}
+.username:focus, .password:focus{
+    border:2px solid #ff0357;
+}
+.username_reg:hover, .password_reg:hover{
+    border:2px solid #ff0357;
+}
+.username_reg:focus, .password_reg:focus{
+    border:2px solid #ff0357;
+}
 /*Login and Register Page redirect to each other links*/
 .register_link:link , .login_link:link{
   color: #dd634e;

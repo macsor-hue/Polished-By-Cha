@@ -1,0 +1,48 @@
+*{padding: auto;
+margin: auto;}
+table, th, td {
+    border-collapse: collapse;
+    width: 600px;
+    text-align: center;
+    border: 1px solid black;
+}
+#register, #login{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #FFF0F5;
+    background-color: #E89EB8;
+}
+.reg_info, .login_info, .update_info{
+    
+    padding-top: 80px;
+    text-align: center;
+}
+#reg_text, #login_text{
+    font-size: 35px;
+}
+#reg_box, #login_box{
+    color: #E89EB8;
+    background-color: #FFF0F5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    height: 40px;
+    width: 100px;
+}
+#username, #password {
+    height: 25px;
+    width: 280px; 
+    margin: auto; 
+    display: block; 
+}
+a:link {
+  color: #FFF0F5;
+}
+a:visited {
+  color: #FFF0F5;
+}
+a:hover {
+  color: #dd8f87; 
+}
+

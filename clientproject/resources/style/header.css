@@ -1,0 +1,41 @@
+*{
+    text-decoration: none;
+}
+
+.nav_cont{
+  display: inline-flex;
+  justify-content: left;
+}
+#dashboard_body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #FFF0F5;
+  background-color: #E89EB8;
+  margin: 0;
+  padding: 0;
+}
+.navbar{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: #FFF0F5;
+  text-align: left ;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.navdiv{
+  align-items: left;
+  justify-content: flex-start;
+}
+.float-img {
+  float: left;
+  margin-top: -2px;
+  height: 100px;   
+  width: auto;   
+}
+#welcome{
+  color: #E89EB8;
+  font-size: 30px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
+}
+

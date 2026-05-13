@@ -1,9 +1,11 @@
 <?php
+// SESSION & DATABASE INITIALIZATION
 session_start();
 include("../../connect/conn/database.php");
 
-
-//sales report query for all total sales
+// QUERY: OVERALL TOTALS
+// Fetches total sales amount and total number
+// of appointments across all records
 $stmt=$conn->prepare("SELECT SUM(price) as total_sales, COUNT(*) as total_appointments FROM clientinfo");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -15,6 +17,7 @@ $data = $result->fetch_assoc();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../resources/style/admin_header.css">
     <link rel="stylesheet" href="../../resources/style/sales.css">
     <link rel="stylesheet" href="../../resources/style/alerts.css">
@@ -22,6 +25,9 @@ $data = $result->fetch_assoc();
     <link rel="icon" type="image/x-icon" href="../../resources/style/photos/header_icon.png">
 </head>
 <body >
+    <!-- FLASH MESSAGE ALERT (Session-based)
+         Displays success/error alerts then clears
+         the session flash data immediately after -->
     <?php if (!empty($_SESSION['flash'])): ?>
         <input type="checkbox" id="toggle-close" checked hidden>
         <div class="alert_overlay">
@@ -35,18 +41,24 @@ $data = $result->fetch_assoc();
             </div>
         </div>
     <?php unset($_SESSION['flash']); endif; ?>
+    <!-- HEADER INCLUDE -->
     <?php include '../../includes/adminHeader_features.php'; ?>
     <div class="sales">
+        <!-- Page Title -->
         <div class="page_title">
             <h1>Sales Report</h1>
             <p>View your sales performance</p>
         </div>
+
         <div class="sales_main">
             <div class="sales_container">
+                <!--  CARD: TOTAL SALES & APPOINTMENTS (All Time) -->
                 <div class="sales_info highlight-sales">
                     <div class="total_sales"><?php echo "Total Sales:"  ?> </div> 
                     <div class="totalSalesAmt"> <?php echo "₱" . ($data['total_sales']?? 0); ?></div>
                 </div>
+                 <!-- CARD: TODAY'S SALES
+                     Fetches total sales for the current date -->
                 <div class="sales_info">
                     <div class="total_appmt"><?php echo "Total Appointments: "  ?> </div> 
                     <div class="totalAppmtAmt"> <?php echo ($data['total_appointments']?? 0); ?></div>
@@ -64,9 +76,9 @@ $data = $result->fetch_assoc();
                     ?>
                     <?php echo "Today's Sales: ₱". ($row['today_sales']?? 0)."<br><br>";?>  
                 </div>
+                <!-- CARD: SALES BY SPECIFIC DATE
+                     Form to select a date and view sales report -->
                 <div class="sales_info">
-                    <?php
-                    //specific date sales report query ?>
                     <form method="POST">
                         <label for="date_sales">SELECT REPORT DATE</label>
                         <input type="date" name="date_sales" required>
@@ -75,15 +87,15 @@ $data = $result->fetch_assoc();
                     <?php
                     if(isset($_POST['date_sales'])){
                         $date = $_POST['date_sales'];
-                        
+
+                        // Query: Summary totals for selected date
                         $stmt = $conn->prepare("SELECT SUM(price) AS total, COUNT(*) as total_appointments FROM clientinfo WHERE appointment_date = ?");
                         $stmt->bind_param("s",$date);
                         $stmt->execute();
                         $result = $stmt->get_result();
-                        $row=$result->fetch_assoc();
-                        
+                        $row=$result->fetch_assoc();?>
 
-                    //table to show needed information for that date ?>
+                    <!-- Summary Table -->
                     <table class="dates_report">
                     <thead>
                         <tr>
@@ -101,6 +113,7 @@ $data = $result->fetch_assoc();
                     </tbody>
                     </table>
 
+                    <!-- Customer Detail Table for Selected Date -->
                     <h3>Customers that day</h3>
                     <table>
                                 <thead>
@@ -113,7 +126,8 @@ $data = $result->fetch_assoc();
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php   
+                                    <?php  
+                                    // Query: All appointments on selected date 
                                     $sql = "SELECT * FROM clientinfo WHERE appointment_date = '$date'";
                                     $result = mysqli_query($conn, $sql);
                                     if(!$result){
@@ -132,13 +146,11 @@ $data = $result->fetch_assoc();
                                 </tbody>
                         </table> 
                             
-                    <?php } 
-
-
-                    //sales report query for specific date span ?>
+                    <?php } ?>
                 </div>
+                <!-- CARD: SALES BY DATE RANGE
+                     Form to select a from/to range and view report -->
                 <div class="sales_info">
-                    
                     <p>SELECT SALES REPORT DATE SPAN</p>
                     <form method="POST">
                         <label for="from">From:</label>
@@ -154,13 +166,14 @@ $data = $result->fetch_assoc();
                         $from = $_POST['from'];
                         $to = $_POST['to'];
 
+                        // Query: Summary totals for selected date range
                         $stmt = $conn->prepare("SELECT SUM(price) AS total, COUNT(*) as total_appointments FROM clientinfo WHERE appointment_date BETWEEN ? AND ?");
                         $stmt->bind_param("ss",$from,$to);
                         $stmt->execute();
                         $result = $stmt->get_result();
-                        $row=$result->fetch_assoc();
-
-                    //table to show needed information for that date ?>
+                        $row=$result->fetch_assoc();?>
+                    
+                    <!-- Summary Table -->
                     <table>
                     <thead>
                         <tr>
@@ -178,6 +191,7 @@ $data = $result->fetch_assoc();
                     </tbody>
                     </table>
 
+                    <!-- Customer Detail Table for Selected Date Range -->
                     <h3>Customers that day</h3>
                     <table>
                                 <thead>
@@ -191,6 +205,7 @@ $data = $result->fetch_assoc();
                                 </thead>
                                 <tbody>
                                     <?php
+                                    // Query: All appointments within selected date range
                                     $sql = "SELECT * FROM clientinfo WHERE appointment_date  BETWEEN '$from' AND '$to' ";
                                     $result = mysqli_query($conn, $sql);
                                     if(!$result){
@@ -208,11 +223,10 @@ $data = $result->fetch_assoc();
                                     <?php }?>
                                 </tbody>
                         </table> 
-                    <?php  } 
-
-
-                    //sales report query for specific Month ?>
+                    <?php  }  ?>
                 </div>
+                <!-- CARD: SALES BY MONTH
+                     Form to select a month and view report -->
                 <div class="sales_info">
                     <?php
                     $year = date('Y');
@@ -241,13 +255,14 @@ $data = $result->fetch_assoc();
                     if(isset($_POST['month'])){
                         $month = $_POST['month'];
 
+                        // Query: Summary totals for selected month
                         $stmt = $conn->prepare("SELECT SUM(price) AS total, COUNT(*) as total_appointments FROM clientinfo WHERE DATE_FORMAT(appointment_date,'%Y-%m')= ?");
                         $stmt->bind_param("s",$month);
                         $stmt->execute();
                         $result = $stmt->get_result();
                         $row=$result->fetch_assoc();
 
-                    // change month from numbers to words
+                    // Convert numeric month value to full month name
                     $year = date('Y');
                     switch($month){
                         case $year . "-01":
@@ -288,8 +303,8 @@ $data = $result->fetch_assoc();
                             break;
                         default:
                             $monthName = "Invalid month";
-                    }
-                    //table to show needed information for that date ?>
+                    }?>
+                    <!-- Summary Table -->
                     <table>
                     <thead>
                         <tr>
@@ -307,6 +322,7 @@ $data = $result->fetch_assoc();
                     </tbody>
                     </table>
 
+                    <!-- Customer Detail Table for Selected Month -->
                     <h3>Customers that month</h3>
                     <table>
                                 <thead>
@@ -319,7 +335,9 @@ $data = $result->fetch_assoc();
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $stmt = $conn->prepare("SELECT * FROM clientinfo WHERE DATE_FORMAT(appointment_date,'%Y-%m')= ?");
+                                    <?php
+                                        // Query: All appointments in selected month
+                                        $stmt = $conn->prepare("SELECT * FROM clientinfo WHERE DATE_FORMAT(appointment_date,'%Y-%m')= ?");
                                         $stmt->bind_param("s",$month);
                                         $stmt->execute();
                                         $result = $stmt->get_result();
@@ -338,12 +356,12 @@ $data = $result->fetch_assoc();
                                     <?php }?>
                                 </tbody>
                         </table> 
-                    <?php  } 
-                    //sales report query for specific Month ?>
+                    <?php  }  ?>
                 </div> 
             </div>
         </div>
     </div>
+    <!-- FOOTER INCLUDE -->
     <?php include '../../includes/admin_footer.php'; ?>
 </body>
 </html>

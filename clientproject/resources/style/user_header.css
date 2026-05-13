@@ -68,6 +68,7 @@ HOME-ACCOUNT-APPOINTMENTS*/
     display: flex;
     align-items: center; 
     gap: 30px;  
+    cursor: pointer;
 }
 
 /*Customer Header/navbar navigation buttons/text 
@@ -102,6 +103,7 @@ Styling, separated for precise styling*/
     border-radius: 8px;
     width: 90px;
     border: none;
+    cursor: pointer;
 }
 
 

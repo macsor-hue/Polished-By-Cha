@@ -1,4 +1,5 @@
 <?php
+//database connection to be accessed with include
 $host = "localhost";
 $username = "root";     
 $password = "";

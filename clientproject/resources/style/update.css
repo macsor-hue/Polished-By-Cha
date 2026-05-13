@@ -7,23 +7,6 @@
     text-align:center;
     margin-bottom: -100px;
 }
-
-/*Update Account nail polish design adjustment*/
-.update_photo{
-    height: 750px;
-    width:auto;
-    margin-left: -1050px;
-    background-color: #fff9fb ;
-    float: right;
-}
-/*Update Account nail polish design no.2 adjustment*/
-.update_photo2{
-    height: 782px;
-    width:auto;
-    margin-right: -1050px;
-    background-color: #fff9fb ;
-    float: left;
-}
 /*Update Account main container/background*/
 .update_flex{
     display: flex;
@@ -38,8 +21,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 60%;
+    height: 70%;
     width: 720px;
+    margin-top: 80px;
     background-color: #fff9fb;
     border: 0px solid #5c020f;
     text-align: center;
