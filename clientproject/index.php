@@ -28,7 +28,7 @@
 
     <!-- SECTION: SERVICES
          Displays all available nail services with
-         photos, names, prices, and avail buttons -->
+         icons, names, prices, and avail buttons -->
     <section id="services">
         <div class="services_title">
             <h1>Services</h1>

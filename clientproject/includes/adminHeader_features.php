@@ -9,19 +9,19 @@
     </nav>
     <nav class="admin_navbar">
         <div class="containerBtn">
-            <a href="/clientproject/main.php">HOME</a>
-            <a href="/clientproject/features/coolstuff/users.php">ACCOUNT</a>
-            <a href="/clientproject/crud/table/table.php">SCHEDULES</a>
-            <a href="/clientproject/features/coolstuff/salesreport.php">SALES</a>
+            <a href="/main.php">HOME</a>
+            <a href="/features/coolstuff/users.php">ACCOUNT</a>
+            <a href="/crud/table/table.php">SCHEDULES</a>
+            <a href="/features/coolstuff/salesreport.php">SALES</a>
         </div>
     </nav>
     <nav class="admin_navbar">
         <div class="containerActn">
-            <form action="/clientproject/code.php" method="POST">
+            <form action="/code.php" method="POST">
                 <input type="hidden" name="action" value="admin">
                 <button type="submit" class="adminBtn">ADMIN</button>
             </form>
-            <form action="/clientproject/code.php" method="post"
+            <form action="/code.php" method="post"
                 onsubmit="return confirm('Are you sure you want to logout?');">
                 <input type="hidden" name="action" value="logout">
                 <button type="submit" class="logoutBtn">LOGOUT</button>

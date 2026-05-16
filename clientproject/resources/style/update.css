@@ -57,7 +57,11 @@
 .username, .password {
     height: 35px;
     width: 280px; 
-    margin: auto; 
+    margin: auto;
+    background-color: #ffffff;
+    border: 2px solid #5c020f;
+    border-radius: 25px;
+    padding-left: 10px;
 }
 /*Update Account text box animation for interactivity*/
 .username:focus, 

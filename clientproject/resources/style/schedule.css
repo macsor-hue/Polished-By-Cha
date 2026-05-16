@@ -77,6 +77,16 @@ td{
     color: #555;
 }
 
+.approval_appointment{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+}
+
 /*Appointment Schedule Page table row transition effect*/
 tbody tr{
     transition: 0.25s ease;

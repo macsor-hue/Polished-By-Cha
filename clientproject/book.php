@@ -112,64 +112,94 @@ if (isset($_POST["cancel"])){
          available time slots; marks unavailable days,
          booked slots, and available slots with a
          booking form button -->
-    <div class="table_calendar">
+   <div class="table_calendar">
         <div class="table_container">
 
-             <!-- Calendar Title -->
             <div class="table_title">
                 <h1>Check what days are still available!</h1>
             </div>
+
             <div class="table_content">
+
                 <?php
-                    // Build current week date array (Monday to Sunday)
+                    // WEEKLY CALENDAR GENERATION
                     $startoftheweek = date('Y-m-d',strtotime('monday this week'));
+
                     $week=[];
+
                     for ($i=0;$i<7;$i++){
-                        $week[]=date('Y-m-d',strtotime("$startoftheweek+$i days"));
-                    }
-                    // Define available time slots
+    $day=date('Y-m-d',strtotime("$startoftheweek+$i days"));
+    if(!in_array(date('l',strtotime($day)),['Monday','Tuesday','Wednesday','Thursday'])){
+        $week[]=$day;
+    }
+}
+                    // APPOINTMENT TIME SLOTS
                     $times = [
                             "9:00 AM","10:30 AM","12:00 PM","1:30 PM",
                             "3:00 PM","4:30 PM","6:00 PM","7:30 PM"
                     ];
                 ?>
+
                 <table>
-                    <!-- Calendar Headers: Time + Day columns -->
+
+                    <!-- TABLE HEADER -->
                     <thead>
                         <th>Time</th>
-                        <?php foreach($week as $day):?>
-                        <th><?php echo date('D',strtotime($day));?><br><?php echo $day;?></th>
-                        <?php endforeach;?>
-                        </thead>
 
-                     <!-- Calendar Body: Slot status per time per day -->
+                        <?php foreach($week as $day):?>
+                        <th>
+                            <?php echo date('D',strtotime($day));?><br>
+                            <?php echo $day;?>
+                        </th>
+                        <?php endforeach;?>
+
+                    </thead>
+
+                    <!-- TABLE BODY -->
                     <tbody>
+
                         <?php foreach($times as $time):?>
+
                         <tr>
+
+                            <!-- TIME SLOT -->
                             <td><?php echo $time;?></td>
+
                             <?php foreach($week as $day):?>
+
                             <td>
-                            <?php $dayname=date('l',strtotime($day));
-                            // Mon–Thu are unavailable (school days)
+
+                            <?php 
+                                // DAY CHECK
+                                // Monday to Thursday are unavailable
+                                $dayname=date('l',strtotime($day));
+
                                 if(in_array($dayname,['Monday','Tuesday','Wednesday','Thursday'])){
                                     echo"At School (Unavailable)";
                                 }
+
+                                // APPOINTMENT CHECK
+                                // Checks if the schedule
+                                // is already booked
                                 else{
-                                    // Check if slot is already booked
-                                    $stmt=$conn->prepare("SELECT * FROM clientinfo WHERE appointment_date=? and appointment_time=?");
-                                    $stmt->bind_param("ss",$day,$time);
+
+                                    $stmt=$conn->prepare("SELECT * FROM clientinfo WHERE appointment_date=? AND appointment_time=? AND appointment_status='approved'");                                         $stmt->bind_param("ss",$day,$time);
                                     $stmt->execute();
                                     $result=$stmt->get_result();
+
+                                    // BOOKED SLOT
                                     if($result->num_rows>0){
-                                        // Slot is taken
                                         echo "BOOKED";
                                     }
+
+                                    // AVAILABLE SLOT
                                     else{
-                                        // Slot is available — render booking button
                                         echo ' <form action="book.php" method="post">
                                         <input type="hidden" name="time" value="'.$time.'">
                                         <input type="hidden" name="date" value="'.$day.'">
-                                        <button type="submit" class="availableBtn">Available</button>
+                                        <button type="submit" class="availableBtn">
+                                            Available
+                                        </button>
                                         </form>';
                                     }
                                 }

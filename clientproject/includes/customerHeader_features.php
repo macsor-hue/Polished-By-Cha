@@ -9,14 +9,14 @@
     </nav>
     <nav class="user_navbar">
         <div class="containerBtn">
-            <a href="/clientproject/main.php">HOME</a>
-            <a href="/clientproject/features/coolstuff/customer_update.php">ACCOUNT</a>
-            <a href="/clientproject/crud/table/custable.php">APPOINMENTS</a>
+            <a href="/main.php">HOME</a>
+            <a href="/features/coolstuff/customer_update.php">ACCOUNT</a>
+            <a href="/crud/table/custable.php">APPOINMENTS</a>
         </div>
     </nav>
     <nav class="user_navbar">
         <div class="containerActn">
-            <form action="/clientproject/code.php" method="post"
+            <form action="/code.php" method="post"
                 onsubmit="return confirm('Are you sure you want to logout?');">
                 <input type="hidden" name="action" value="logout">
                 <button type="submit" class="logoutBtn">LOGOUT</button>

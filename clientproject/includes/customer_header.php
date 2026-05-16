@@ -9,7 +9,7 @@
         <div class="containerBtn">
             <a href="main.php">HOME</a>
             <a href="features/coolstuff/customer_update.php">ACCOUNT</a>
-            <a href="/clientproject/crud/table/custable.php">APPOINMENTS</a>
+            <a href="crud/table/custable.php">APPOINMENTS</a>
         </div>
     </nav>
     <nav class="user_navbar">

@@ -61,10 +61,10 @@ $username = $_SESSION['user']['username'] ?? '';
                     <label for="username">Username:</label><br>
                     <input type="text" id="username" name="username" class="username" value="<?php echo $username;  ?>"><br><br>
                     <!-- Current Password Field -->
-                    <label for="password" class="password">Current Password:</label><br>
+                    <label for="password">Current Password:</label><br>
                     <input type="text" id="cpassword" name="cpassword" class="password" placeholder="Input Current Password"><br><br>
                     <!-- New Password Field -->
-                    <label for="password" class="password">New Password:</label><br>
+                    <label for="password">New Password:</label><br>
                     <input type="text" id="npassword" name="npassword" class="password" placeholder="Input New Password"><br><br>
                     <!-- Submit Button -->
                     <button type="submit" name="submit" class="update_box">Update</button>

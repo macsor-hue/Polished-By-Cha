@@ -17,7 +17,7 @@ function flash(string $type, string $text): void
 // Redirect to the main dashboard page
 function redirect_main(): void
 {
-    header("Location:/clientproject/main.php");
+    header("Location: main.php");
     exit;
 }
 

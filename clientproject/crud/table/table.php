@@ -80,16 +80,18 @@ include("../../connect/conn/database.php");
                                 <td><?php echo $row["service"]; ?></td>
                                 <td><?php echo $row["price"]; ?></td>
                                 <td><?php echo $row["duration"]; ?></td>
-                                <td><?php echo $row["appointment_status"]; 
+                                <td class="approval_appointment"><?php echo $row["appointment_status"];
                                      // Only show buttons if not already resolved
                                         if($row["appointment_status"] === 'pending'){
                                          ?><br>
-                                             <form action="../../code.php" method="post" style="display:inline-block; margin-right:4px;">
+                                             <form action="../../code.php" method="post"
+                                                onsubmit="return confirm('Are you sure you want to APPROVE this appointment?');">
                                              <input type="hidden" name="action" value="approve_appointment">
                                              <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
                                              <button type="submit" class="appointmentBtn">Approve</button>
                                             </form>
-                                            <form action="../../code.php" method="post" style="display:inline-block;">
+                                            <form action="../../code.php" method="post"
+                                            onsubmit="return confirm('Are you sure you want to CANCEL this appointment?');">
                                              <input type="hidden" name="action" value="cancel_appointment">
                                              <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
                                              <button type="submit" class="appointmentBtn">Cancel</button>
