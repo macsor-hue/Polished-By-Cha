@@ -205,4 +205,96 @@ if($action === 'admin'){
     
 }
 
+// ACTION: APPROVE APPOINTMENT
+// Admin-only: sets appointment status to 'approved'
+if($action === 'approve_appointment'){
+
+    // Block non-admins
+    $username = $_SESSION['user']['username'] ?? '';
+    $stmt = $conn->prepare("SELECT permission FROM accinfo WHERE username = ? LIMIT 1");
+    if(!$stmt){
+        flash('err', 'Database error');
+        redirect_main();
+        exit();
+    }
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $user = $stmt->get_result()->fetch_assoc();
+
+    if(!$user || strtolower(trim($user['permission'])) !== 'yes'){
+        flash('err', 'Permission denied.');
+        redirect_main();
+        exit();
+    }
+
+    // Get appointment ID from POST
+    $appointment_id = filter_input(INPUT_POST, 'appointment_id', FILTER_SANITIZE_NUMBER_INT);
+    if(empty($appointment_id)){
+        flash('err', 'Appointment not found.');
+        redirect_main();
+        exit();
+    }
+
+    // Update status to approved
+    $stmt = $conn->prepare("UPDATE clientinfo SET appointment_status = 'approved' WHERE appointment_id = ?");
+    if(!$stmt){
+        flash('err', 'Database error.');
+        redirect_main();
+        exit();
+    }
+    $stmt->bind_param("i", $appointment_id);
+    $stmt->execute();
+    $stmt->close();
+
+    flash('ok', 'Appointment approved successfully.');
+    redirect_main();
+    exit();
+}
+
+
+// ACTION: CANCEL APPOINTMENT
+// Admin-only: sets appointment status to 'cancelled'
+if($action === 'cancel_appointment'){
+
+    // Block non-admins
+    $username = $_SESSION['user']['username'] ?? '';
+    $stmt = $conn->prepare("SELECT permission FROM accinfo WHERE username = ? LIMIT 1");
+    if(!$stmt){
+        flash('err', 'Database error');
+        redirect_main();
+        exit();
+    }
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $user = $stmt->get_result()->fetch_assoc();
+
+    if(!$user || strtolower(trim($user['permission'])) !== 'yes'){
+        flash('err', 'Permission denied.');
+        redirect_main();
+        exit();
+    }
+
+    // Get appointment ID from POST
+    $appointment_id = filter_input(INPUT_POST, 'appointment_id', FILTER_SANITIZE_NUMBER_INT);
+    if(empty($appointment_id)){
+        flash('err', 'Appointment not found.');
+        redirect_main();
+        exit();
+    }
+
+    // Update status to cancelled
+    $stmt = $conn->prepare("UPDATE clientinfo SET appointment_status = 'cancelled' WHERE appointment_id = ?");
+    if(!$stmt){
+        flash('err', 'Database error.');
+        redirect_main();
+        exit();
+    }
+    $stmt->bind_param("i", $appointment_id);
+    $stmt->execute();
+    $stmt->close();
+
+    flash('ok', 'Appointment cancelled successfully.');
+    redirect_main();
+    exit();
+}
 ?>

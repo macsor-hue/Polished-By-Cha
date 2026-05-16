@@ -60,6 +60,7 @@ $result = $stmt->get_result();
                             <th>Service</th>
                             <th>Price</th>
                             <th>Duration</th>
+                            <th>Approval status</th>
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>
@@ -86,6 +87,8 @@ $result = $stmt->get_result();
                                 <td><?php echo $row["service"]; ?></td>
                                 <td><?php echo $row["price"]; ?></td>
                                 <td><?php echo $row["duration"]; ?></td>
+                                <td><?php echo $row["appointment_status"]; ?></td>
+
                                  <!-- Update Action -->
                             <td><form action="update.php" method="post"
                                 onsubmit="return confirm('Are you sure you want to update this appointment?');">

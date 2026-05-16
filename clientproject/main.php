@@ -223,9 +223,11 @@ include("connect/conn/database.php");
    $week=[];
 
    for ($i=0;$i<7;$i++){
-        $week[]=date('Y-m-d',strtotime("$startoftheweek+$i days"));
-   }
-
+     $day=date('Y-m-d',strtotime("$startoftheweek+$i days"));
+     if(!in_array(date('l',strtotime($day)),['Monday','Tuesday','Wednesday','Thursday'])){
+         $week[]=$day;
+     }
+}
    // APPOINTMENT TIME SLOTS
    $times = [
         "9:00 AM","10:30 AM","12:00 PM","1:30 PM",
@@ -280,19 +282,22 @@ include("connect/conn/database.php");
                                 // Checks if the selected schedule
                                 // already has a booking
                                 else{
-                                    $stmt=$conn->prepare("SELECT * FROM clientinfo WHERE appointment_date=? and appointment_time=?");
+                                    $stmt=$conn->prepare("SELECT * FROM clientinfo WHERE appointment_date=? AND appointment_time=? AND appointment_status='approved'");
                                     $stmt->bind_param("ss",$day,$time);
                                     $stmt->execute();
                                     $result=$stmt->get_result();
                                     $row=$result->fetch_assoc();
                                     // BOOKED SLOT
                                     if($result->num_rows>0){
-                                        echo 'BOOKED BY '.$row["customer_name"];
+                                      
+                                             echo 'BOOKED BY ' . htmlspecialchars($row["customer_name"]) . '<br>';
+                                                echo '<small>Status: ' . htmlspecialchars($row["appointment_status"]) . '</small><br>';
+                                                            
                                     }
 
                                     // AVAILABLE SLOT
                                     else{
-                                        echo '<button type="submit" disable class="availableBtn">
+                                        echo '<button type="submit" disable     class="availableBtn">
                                             Available
                                         </button>';
                                 
@@ -405,9 +410,11 @@ include("connect/conn/database.php");
                     $week=[];
 
                     for ($i=0;$i<7;$i++){
-                        $week[]=date('Y-m-d',strtotime("$startoftheweek+$i days"));
-                    }
-
+    $day=date('Y-m-d',strtotime("$startoftheweek+$i days"));
+    if(!in_array(date('l',strtotime($day)),['Monday','Tuesday','Wednesday','Thursday'])){
+        $week[]=$day;
+    }
+}
                     // APPOINTMENT TIME SLOTS
                     $times = [
                             "9:00 AM","10:30 AM","12:00 PM","1:30 PM",
@@ -458,12 +465,8 @@ include("connect/conn/database.php");
                                 // is already booked
                                 else{
 
-                                    $stmt=$conn->prepare("SELECT * FROM clientinfo WHERE appointment_date=? and appointment_time=?");
-
-                                    $stmt->bind_param("ss",$day,$time);
-
+                                    $stmt=$conn->prepare("SELECT * FROM clientinfo WHERE appointment_date=? AND appointment_time=? AND appointment_status='approved'");                                         $stmt->bind_param("ss",$day,$time);
                                     $stmt->execute();
-
                                     $result=$stmt->get_result();
 
                                     // BOOKED SLOT

@@ -6,7 +6,7 @@ include("../../connect/conn/database.php");
 // QUERY: OVERALL TOTALS
 // Fetches total sales amount and total number
 // of appointments across all records
-$stmt=$conn->prepare("SELECT SUM(price) as total_sales, COUNT(*) as total_appointments FROM clientinfo");
+$stmt=$conn->prepare("SELECT SUM(price) as total_sales, COUNT(*) as total_appointments FROM clientinfo WHERE appointment_status = 'approved' AND payment_status = 'paid' ");
 $stmt->execute();
 $result = $stmt->get_result();
 $data = $result->fetch_assoc();
@@ -68,7 +68,7 @@ $data = $result->fetch_assoc();
                     <?php
                     //sales report query for today's sales
                     $today = date('Y-m-d');
-                    $stmt=$conn->prepare("SELECT SUM(price) AS today_sales FROM clientinfo WHERE appointment_date = ?");
+                    $stmt=$conn->prepare("SELECT SUM(price) AS today_sales FROM clientinfo WHERE appointment_date = ? AND appointment_status = 'approved' AND payment_status = 'paid' ");
                     $stmt->bind_param("s",$today);
                     $stmt->execute();
                     $result=$stmt->get_result();
@@ -89,8 +89,7 @@ $data = $result->fetch_assoc();
                         $date = $_POST['date_sales'];
 
                         // Query: Summary totals for selected date
-                        $stmt = $conn->prepare("SELECT SUM(price) AS total, COUNT(*) as total_appointments FROM clientinfo WHERE appointment_date = ?");
-                        $stmt->bind_param("s",$date);
+$stmt = $conn->prepare("SELECT SUM(price) AS total, COUNT(*) as total_appointments FROM clientinfo WHERE appointment_date = ? AND appointment_status = 'approved'AND payment_status = 'paid' ");                        $stmt->bind_param("s",$date);
                         $stmt->execute();
                         $result = $stmt->get_result();
                         $row=$result->fetch_assoc();?>
@@ -128,7 +127,7 @@ $data = $result->fetch_assoc();
                                 <tbody>
                                     <?php  
                                     // Query: All appointments on selected date 
-                                    $sql = "SELECT * FROM clientinfo WHERE appointment_date = '$date'";
+                                    $sql = "SELECT * FROM clientinfo WHERE appointment_date = '$date' AND appointment_status = 'approved' AND payment_status = 'paid'";
                                     $result = mysqli_query($conn, $sql);
                                     if(!$result){
                                         die("Query failed: " . mysqli_error($conn));
@@ -167,7 +166,7 @@ $data = $result->fetch_assoc();
                         $to = $_POST['to'];
 
                         // Query: Summary totals for selected date range
-                        $stmt = $conn->prepare("SELECT SUM(price) AS total, COUNT(*) as total_appointments FROM clientinfo WHERE appointment_date BETWEEN ? AND ?");
+                        $stmt = $conn->prepare("SELECT SUM(price) AS total, COUNT(*) as total_appointments FROM clientinfo WHERE appointment_date BETWEEN ? AND ? AND appointment_status = 'approved' AND payment_status = 'paid'");
                         $stmt->bind_param("ss",$from,$to);
                         $stmt->execute();
                         $result = $stmt->get_result();
@@ -206,7 +205,7 @@ $data = $result->fetch_assoc();
                                 <tbody>
                                     <?php
                                     // Query: All appointments within selected date range
-                                    $sql = "SELECT * FROM clientinfo WHERE appointment_date  BETWEEN '$from' AND '$to' ";
+                                    $sql = "SELECT * FROM clientinfo WHERE appointment_date  BETWEEN '$from' AND '$to' AND appointment_status = 'approved' AND payment_status = 'paid'";
                                     $result = mysqli_query($conn, $sql);
                                     if(!$result){
                                         die("Query failed: " . mysqli_error($conn));
@@ -256,7 +255,7 @@ $data = $result->fetch_assoc();
                         $month = $_POST['month'];
 
                         // Query: Summary totals for selected month
-                        $stmt = $conn->prepare("SELECT SUM(price) AS total, COUNT(*) as total_appointments FROM clientinfo WHERE DATE_FORMAT(appointment_date,'%Y-%m')= ?");
+                        $stmt = $conn->prepare("SELECT SUM(price) AS total, COUNT(*) as total_appointments FROM clientinfo WHERE DATE_FORMAT(appointment_date,'%Y-%m')= ? AND appointment_status = 'approved' AND payment_status = 'paid'");
                         $stmt->bind_param("s",$month);
                         $stmt->execute();
                         $result = $stmt->get_result();
@@ -337,7 +336,7 @@ $data = $result->fetch_assoc();
                                 <tbody>
                                     <?php
                                         // Query: All appointments in selected month
-                                        $stmt = $conn->prepare("SELECT * FROM clientinfo WHERE DATE_FORMAT(appointment_date,'%Y-%m')= ?");
+                                        $stmt = $conn->prepare("SELECT * FROM clientinfo WHERE DATE_FORMAT(appointment_date,'%Y-%m')= ? AND appointment_status = 'approved' AND payment_status = 'paid'");
                                         $stmt->bind_param("s",$month);
                                         $stmt->execute();
                                         $result = $stmt->get_result();

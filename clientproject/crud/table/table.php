@@ -55,8 +55,10 @@ include("../../connect/conn/database.php");
                             <th>Service</th>
                             <th>Price</th>
                             <th>Duration</th>
-                            <th>Delete</th>
+                            <th>Approval status</th>
+                            <th>Delete</th>                           
                             <th>Payment status</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -78,6 +80,21 @@ include("../../connect/conn/database.php");
                                 <td><?php echo $row["service"]; ?></td>
                                 <td><?php echo $row["price"]; ?></td>
                                 <td><?php echo $row["duration"]; ?></td>
+                                <td><?php echo $row["appointment_status"]; 
+                                     // Only show buttons if not already resolved
+                                        if($row["appointment_status"] === 'pending'){
+                                         ?><br>
+                                             <form action="../../code.php" method="post" style="display:inline-block; margin-right:4px;">
+                                             <input type="hidden" name="action" value="approve_appointment">
+                                             <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
+                                             <button type="submit" class="appointmentBtn">Approve</button>
+                                            </form>
+                                            <form action="../../code.php" method="post" style="display:inline-block;">
+                                             <input type="hidden" name="action" value="cancel_appointment">
+                                             <input type="hidden" name="appointment_id" value="<?php echo $row['appointment_id']; ?>">
+                                             <button type="submit" class="appointmentBtn">Cancel</button>
+                                            </form>
+                                            <?php    }?></td>
                     
                                  <!-- Delete Action -->                            
                                 <td><?php if($row["payment_status"]!="paid"){ ?>
@@ -93,7 +110,7 @@ include("../../connect/conn/database.php");
                                     }?>
                                 </td>
                                  <!-- Payment Action -->
-                                <td><?php if($row["payment_status"]!="paid"){?>
+                                <td><?php if($row["payment_status"]!="paid" && $row["appointment_status"]=="approved"){?>
                                     <form action="crudcode.php" method="post"
                                          onsubmit="return confirm('Are you sure you want to mark this as paid?');"></onsubmit>
                                         <input type="hidden" name="pay_id" value="<?php echo $row["appointment_id"];?>">
@@ -102,6 +119,12 @@ include("../../connect/conn/database.php");
                                         <button type="submit" class="appointmentBtn"> Mark as Paid </button>
                                         </form>
                             <?php } 
+                                    elseif($row["appointment_status"]=="pending"){
+                                        echo "UPDATE APPROVAL STATUS";
+                                    }
+                                    elseif($row["appointment_status"]=="cancelled"){
+                                        echo "CANCELLED";
+                                    }
                                     else{
                                        echo "PAID";
                                     }

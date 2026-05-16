@@ -99,10 +99,17 @@ tbody tr:hover{
     font-size: 15px;
     font-weight: bold;
     transition: 0.3s ease;
+    display: inline-block;
 }
 
 /*Appointment Schedule Page button hover animation*/
 .appointmentBtn:hover{
 transform: translateY(-2px);
     box-shadow: 0 6px 14px rgba(150, 0, 24, 0.15);
+}
+
+/*Appointment Schedule Page forces forms inside table cells to sit side by side*/
+td form {
+    display: inline-block;
+    margin: 2px;
 }
